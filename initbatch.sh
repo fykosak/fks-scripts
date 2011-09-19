@@ -28,6 +28,7 @@ cd "./batch$1"
 rename "s/(.*)B.tex\$/\${1}$1.tex/" *.tex
 
 sed -i "s/BATCHNO=B/BATCHNO=$1/" Makefile
+sed -i "s/\\\\setcounter{batch}{B}/\\\\setcounter{batch}{$1}/" batch$1.tex
 
 # create problems
 cd "../$PROBLEMS_DIR"

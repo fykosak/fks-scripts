@@ -21,23 +21,14 @@ MAKEFILE="problems/Makefile.inc"
 
 cat >$MAKEFILE <<END
 # Makefile part for problems dependent images
-# Need to define variables:	PD	problems dir
-#				GD	graphics dir (for problems)
 
 END
 
-echo -n ".PHONY: " >>$MAKEFILE
-for B in $(seq 1 $2); do
-	echo "\\" >> $MAKEFILE
-	for P in $(seq 1 $1); do
-		echo -n "problem$B-$P " >>$MAKEFILE
-	done
-done
 echo >>$MAKEFILE
 for B in $(seq 1 $2); do
 	echo  >> $MAKEFILE
 	for P in $(seq 1 $1); do
-		echo "problem$B-$P: \$(PD)/problem$B-$P.tex" >>$MAKEFILE
+		echo "problem${B}_$P= problem$B-$P.tex" >>$MAKEFILE
 	done
 done
 
