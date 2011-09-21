@@ -17,7 +17,7 @@ if [ -d "batch$1" ] ; then
 fi
 
 if [ "$2" != "" ] ; then
-	$PROB_COUNT=$2
+	PROB_COUNT=$2
 fi
 
 # copy empty batch structure
