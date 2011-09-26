@@ -21,6 +21,8 @@ MAKEFILE="problems/Makefile.inc"
 
 cat >$MAKEFILE <<END
 # Makefile part for problems dependent images
+# Problem TeX file must be first dependecy in order building process worked
+# correctly
 
 END
 

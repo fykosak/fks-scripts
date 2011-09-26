@@ -27,7 +27,9 @@ cp -r "$TEMPLATE_PATH/year/batch" "./batch$1"
 cd "./batch$1"
 rename "s/(.*)B.tex\$/\${1}$1.tex/" *.tex
 
+PREV=$(($1-1))
 sed -i "s/BATCHNO=B/BATCHNO=$1/" Makefile
+sed -i "s/SOLVEDBATCHNO=BB/SOLVEDBATCHNO=$PREV/" Makefile
 sed -i "s/\\\\setcounter{batch}{B}/\\\\setcounter{batch}{$1}/" batch$1.tex
 
 # create problems
