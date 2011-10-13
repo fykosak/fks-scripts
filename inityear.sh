@@ -15,6 +15,7 @@ fi
 mkdir problems
 cp -r "$TEMPLATE_PATH/year/problems/graphics" "./problems/graphics"
 cp "$TEMPLATE_PATH/year/Makefile.inc" Makefile.inc
+cp "$TEMPLATE_PATH/year/Makefile" Makefile
 
 # create dependency Makefile part
 MAKEFILE="problems/Makefile.inc"
