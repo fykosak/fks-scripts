@@ -14,6 +14,7 @@ fi
 # create empty year structure
 mkdir problems
 cp -r "$TEMPLATE_PATH/year/problems/graphics" "./problems/graphics"
+cp  "$TEMPLATE_PATH/year/problems/web.tex" "./problems/web.tex"
 cp "$TEMPLATE_PATH/year/Makefile.inc" Makefile.inc
 cp "$TEMPLATE_PATH/year/Makefile" Makefile
 
