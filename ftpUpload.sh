@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rocnik=25
+rocnik=26
 user=***REMOVED***
 server=utf.troja.mff.cuni.cz
 path=/www/fykos/rocnik${rocnik}/reseni
