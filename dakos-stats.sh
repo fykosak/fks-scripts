@@ -1,7 +1,12 @@
 #!/bin/bash
 
-PROBLEMS=../problems
-STATSFILE=$1
+if [ "$2x" = "x" ] ; then
+	echo "Usage: $0 problemsdir statsfile"
+	exit 1
+fi
+
+PROBLEMS=$1
+STATSFILE=$2
 
 sed -i 's/\r//' $STATSFILE
 IFS=";"
