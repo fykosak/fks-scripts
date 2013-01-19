@@ -6,4 +6,4 @@ if [ "x$3" = "x" ] ; then
 fi
 
 DEBUG="--server-response --no-check-certificate"
-wget --post-file="$2" --header="Content-Type: text/xml" --header="SOAPAction: \"soapaction\"" $DEBUG "$1" -O "$3"
+wget --post-file="$2" --header="Content-Type: text/xml" --header="SOAPAction: \"GetStats\"" $DEBUG "$1" -O "$3"

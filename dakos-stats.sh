@@ -13,6 +13,7 @@ IFS=";"
 cat $STATSFILE | while read batch problem max avg people ; do
 	[ "x$problem" = "x" ] && continue
 	FILE="${PROBLEMS}/problem$batch-$problem.tex"
+	[ -f "$FILE" ] || continue
 	
 	sed -i 's/^%\\probsolvers/\\probsolvers/' $FILE
 	sed -i 's/^\\probsolvers.*$/\\probsolvers{'$people'}/' $FILE
