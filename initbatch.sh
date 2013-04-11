@@ -1,6 +1,7 @@
 #!/bin/bash
 
 TEMPLATE_PATH=$(dirname $0)/../templates
+
 PROBLEMS_DIR=problems
 PROB_COUNT=8
 
@@ -25,19 +26,24 @@ cp -r "$TEMPLATE_PATH/year/batch" "./batch$1"
 
 # rename batch dependend values
 cd "./batch$1"
-rename "s/(.*)B.tex\$/\${1}$1.tex/" *.tex
+#rename "s/(.*)B.tex\$/\${1}$1.tex/" *.tex
+mv batchB.tex batch$1.tex
+mv serialB.tex serial$1.tex
+mv uvodB.tex uvod$1.tex
 
 PREV=$(($1-1))
-sed -i "s/BATCHNO=B$/BATCHNO=$1/" Makefile
-sed -i "s/SOLVEDBATCHNO=BB/SOLVEDBATCHNO=$PREV/" Makefile
+sed -i "s/BATCHNO=B/BATCHNO=$1/" Makefile
+sed -i "s/SOLVEDBATCHNO=AB/SOLVEDBATCHNO=$PREV/" Makefile
 sed -i "s/\\\\setcounter{batch}{B}/\\\\setcounter{batch}{$1}/" batch$1.tex
+sed -i "s/vysledkyB/vysledky$1/" batch$1.tex
 
 # create problems
 cd "../$PROBLEMS_DIR"
 
 for P in $(seq 1 $PROB_COUNT); do
 	FILENAME="problem$1-$P.tex"
-	cp "$TEMPLATE_PATH/year/problems/problemB-P.tex" "$FILENAME"
+	cp "../$TEMPLATE_PATH/year/problems/problemB-P.tex" "$FILENAME"
 	sed -i "s/\\\\probbatch{B}/\\\\probbatch{$1}/;s/\\\\probno{P}/\\\\probno{$P}/" $FILENAME
 done
 
+cd ../

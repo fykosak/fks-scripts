@@ -2,10 +2,8 @@
 
 rocnik=26
 user=***REMOVED***
-server=utf.troja.mff.cuni.cz
-path=/www/fykos/rocnik${rocnik}/reseni
-
-
+server=fykos.cz
+path=/network/data/www/fykos/rocnik${rocnik}
 
 if [ "x$1" = "x" ] ; then
 	echo "Usage: $(basename $0) [FILEs] ..."
@@ -21,31 +19,17 @@ table[5]=8
 table[6]=5
 table[7]=6
 table[8]=7
-# $1 source file, return via echo
-function transformName {
-	case $1 in
+
+for file in "$@" ; do
+	case $file in
 		reseni?-?.pdf)
-			echo -n ${1:0:-5}${table[${1:8:1}]}.pdf
+			scp $file $user@$server:$path/reseni/$(echo -n ${file:0:-5}${table[${file:8:1}]}.pdf)
 		;;
-		*)
-			return 1
+		serie?.pdf)
+			scp $file $user@$server:$path/$file
+		;;
+		serial?.pdf)
+			scp $file $user@$server:$path/serial/$file
 		;;
 	esac
-	return 0
-}
-
-put=''
-for file in "$@" ; do
-	put="${put}put $file $(transformName $file)"
-	put="$put
-"
 done;
-
-
-cmd="$user
-cd $path
-${put}quit"
-
-#echo "$cmd"
-
-echo "$cmd" | ftp utf.troja.mff.cuni.cz
