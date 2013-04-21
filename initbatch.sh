@@ -35,7 +35,7 @@ PREV=$(($1-1))
 sed -i "s/BATCHNO=B/BATCHNO=$1/" Makefile
 sed -i "s/SOLVEDBATCHNO=AB/SOLVEDBATCHNO=$PREV/" Makefile
 sed -i "s/\\\\setcounter{batch}{B}/\\\\setcounter{batch}{$1}/" batch$1.tex
-sed -i "s/vysledkyB/vysledky$1/" batch$1.tex
+sed -i "s/vysledkyB/vysledky$PREV/" batch$1.tex
 
 # create problems
 cd "../$PROBLEMS_DIR"
