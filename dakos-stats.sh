@@ -12,6 +12,7 @@ sed -i 's/\r//' $STATSFILE
 IFS=";"
 cat $STATSFILE | while read batch problem max avg people ; do
 	[ "x$problem" = "x" ] && continue
+	[ "$avg" = "NaN" ] && continue
 	FILE="${PROBLEMS}/problem$batch-$problem.tex"
 	[ -f "$FILE" ] || continue
 	
