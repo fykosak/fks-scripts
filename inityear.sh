@@ -13,12 +13,14 @@ fi
 
 # create empty year structure
 mkdir problems
+mkdir results
 cp -r "$TEMPLATE_PATH/year/problems/graphics" "./problems/graphics"
-cp  "$TEMPLATE_PATH/year/problems/web.tex" "./problems/web.tex"
-cp "$TEMPLATE_PATH/year/Makefile.inc" Makefile.inc
-cp "$TEMPLATE_PATH/year/Makefile.conf.sample" Makefile.conf.sample
-cp "$TEMPLATE_PATH/year/Makefile.conf.sample" Makefile.conf
-cp "$TEMPLATE_PATH/year/Makefile" Makefile
+cp  "$TEMPLATE_PATH/year/problems/web.tex" "./problems/"
+cp "$TEMPLATE_PATH/year/Makefile.inc" .
+cp "$TEMPLATE_PATH/year/Makefile.conf.sample" .
+cp "$TEMPLATE_PATH/year/Makefile.conf.sample" .
+cp "$TEMPLATE_PATH/year/Makefile" .
+cp "$TEMPLATE_PATH/year/results/"* ./results
 
 # create dependency Makefile part
 MAKEFILE="problems/Makefile.inc"
