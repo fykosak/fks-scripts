@@ -23,13 +23,16 @@ table[8]=7
 for file in "$@" ; do
 	case $file in
 		reseni?-?.pdf)
-			scp $file $user@$server:$path/reseni/$(echo -n ${file:0:-5}${table[${file:8:1}]}.pdf)
+			sfile="reseni/$(echo -n ${file:0:-5}${table[${file:8:1}]}.pdf)"
 		;;
 		serie?.pdf)
-			scp $file $user@$server:$path/$file
+			sfile="$file"
 		;;
 		serial?.pdf)
-			scp $file $user@$server:$path/serial/$file
+			sfile="serial/$file"
 		;;
 	esac
+	scp $file $user@$server:$path/$sfile
+	ssh $user@$server chown $user:fykos $path/$sfile
+	ssh $user@$server chmod 664 $path/$sfile
 done;
