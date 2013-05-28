@@ -1,8 +1,8 @@
 #!/bin/bash
 
-rocnik=26
-user=***REMOVED***
-server=fykos.cz
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $DIR/config
+
 path=/network/data/www/fykos/rocnik${rocnik}
 
 if [ "x$1" = "x" ] ; then
