@@ -20,7 +20,8 @@ table[6]=5
 table[7]=6
 table[8]=7
 
-for file in "$@" ; do
+for files in "$@" ; do
+	file=$(basename $files)
 	case $file in
 		reseni?-?.pdf)
 			sfile="reseni/$(echo -n ${file:0:-5}${table[${file:8:1}]}.pdf)"
@@ -31,8 +32,10 @@ for file in "$@" ; do
 		serial?.pdf)
 			sfile="serial/$file"
 		;;
+		*)
+			continue
 	esac
-	scp $file $user@$server:$path/$sfile
+	scp $files $user@$server:$path/$sfile
 	ssh $user@$server chown $user:fykos $path/$sfile
 	ssh $user@$server chmod 664 $path/$sfile
 done;
