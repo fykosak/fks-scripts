@@ -20,6 +20,7 @@ PZMATCZ="
 	velikost velikosti velikostí velikostem velikostech velikostmi
 	vztah vztahu vztahem vztahy vztahů vztahům vztazích
 	vzorec vzorce vzorci vzorcem vzorců vzorcům vzorcích
+	výraz výrazu výraze výrazem výrazy výrazů výrazům výrazech
 	rovnice rovnici rovnicí rovnic rovnicích rovnicemi
 	rovnost rovnosti rovností rovnostem rovnostech rovnostmi
 	energie energii energií energiím energiích energiemi
@@ -66,6 +67,7 @@ PZMATSK="
 	veľkosť veľkosti veľkostí veľkostiam veľkostiach veľkosťami
 	vzťah vzťahu vzťahom vzťahy vzťahov vzťahom vzťahoch
 	vzorec vzorca vzorci vzorcom vzorcov vzorcom vzorkách
+	výraz výrazu výrazoch výrazom výrazy výrazov výrazom výrazoch
 	rovnice rovnicu rovnicou rovníc rovniciach rovnicami
 	rovnosť rovnosti rovnosťou rovnosť rovnosť rovnosť
 	energie energiu energiou energiám energiách energiami
@@ -160,10 +162,26 @@ ZAMATSK="
 PRODKCZ="
 	obrázek obrázku obrázky obrázkům
 	tabulka tabulce tabulky tabulkách tabulkám
+	výraz výrazu výraze výrazem výrazy výrazů výrazům výrazech
+	vztah vztahu vztahem vztahy vztahů vztahům vztazích
+	vzorec vzorce vzorci vzorcem vzorců vzorcům vzorcích
+	výraz výrazu výraze výrazem výrazy výrazů výrazům výrazech
+	rovnice rovnici rovnicí rovnic rovnicích rovnicemi
+	podle
+	dle
+	viz
 "
 PRODKSK="
 	obrázok obrázku obrázky obrázkom
 	tabuľka tabuľke tabuľky tabuľkách tabuľkám
+	výraz výrazu výrazoch výrazom výrazy výrazov výrazom výrazoch
+	vzťah vzťahu vzťahom vzťahy vzťahov vzťahom vzťahoch
+	vzorec vzorca vzorci vzorcom vzorcov vzorcom vzorkách
+	výraz výrazu výrazoch výrazom výrazy výrazov výrazom výrazoch
+	rovnice rovnicu rovnicou rovníc rovniciach rovnicami
+	podľa
+	podľa
+	pozri
 "
 
 
@@ -186,6 +204,6 @@ do
 	sed -r -i -e "N;s/([ \n\t~]+)($PRMAT)([ \n\t]+)[\$]/\3\1\2~\$/gI;P;D;" "$file" # před matematikou
 	sed -r -i -e "N;s/[\$]([ \n\t]+)($ZAMAT)([ \n\t~]+)/\$~\2\3\1/gI;P;D;" "$file" # za matematikou
 	sed -r -i -e "N;s/([ \n\t~]+)($PRODK)[ \n\t~]+([\\]ref|[\\]eqref|\([\\]ref)/\1\2~\3/gI;P;D;" "$file" # před odkazy
-	sed -r -i -e ";s/~{2,}/~/gI" "$file" # opravit násobné vlnky
-	sed -r -i -e ";s/ *~ */~/gI" "$file" # opravit mezery kolem vlnek
+	sed -r -i -e "N;s/~{2,}/~/gI;P;D;" "$file" # opravit násobné vlnky
+	sed -r -i -e "N;s/[ \n\t]*~[ \n\t]*/~/gI;P;D;" "$file" # opravit mezery kolem vlnek
 done
