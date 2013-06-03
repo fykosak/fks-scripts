@@ -201,7 +201,7 @@ PRMATCZ="
 	zhruba
 	že
 "
-PRMATS="
+PRMATSK="
 	asi
 	byť
 	cca
