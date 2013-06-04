@@ -83,7 +83,6 @@ PZMATCZ="
 	záporný záporná záporné zápornému záporným záporných
 	zrychlení zrychlením zrychleních zrychleními
 "
-
 PZMATSK="
 	bod bodu bode bode bodom body bodov bodom body bodoch
 	čas času čase časom časy časov časom časoch
@@ -279,7 +278,53 @@ PRODKSK="
 	obrázok obrázku obrázky obrázkom
 "
 
+# seznam slov před čísly
+PRCISCZ="
+	rok roku roka roce rokem roky roků rokům rocích
+	den dne dni dnu dnem dny dnů dnům dnech
+	do
+	od
+	po
+	před
+"
+PRCISSK="
+	rok roka roka roku rokom roky rokov rokom rokoch
+	deň dňa dňu dnu dňom dni dní dňom dňoch
+	do
+	od
+	po
+	pred
+"
 
+# názvy měsíců
+MESICCZ="
+	leden ledna lednu ledne lednem ledny lednů lednům lednech
+	únor února únoru únore únorem únory únorů únorům únory únorech
+	březen března březnu březne březnem březny březnům březnech březny
+	duben dubna dubnu dubne dubnem dubnů dubnům dubnech dubny
+	květen května květnu květne květnem květny květnů květnům květnech
+	červen června červnu červne červnem červny červnů červnům červnech
+	červenec července červenci červencem červenců červencům červencích červenci
+	srpen srpna srpnu srpne srpnem srpny srpnů srpnům srpnech
+	září zářím
+	říjen října říjnu říjne říjnem říjny říjnů říjnům říjnech
+	listopad listopadu listopade listopedem listopady listopadů listopadům listopadech
+	prosinec prosince prosinci prosincem prosince prosinců prosincům prosincích prosinci
+"
+MESICSK="
+	január januára januári januára januárom januára januára lednům januára
+	február februára februári februára februárom Február Február únorům Február Február
+	marec marca marci Brezeň marcom marca březnům marca marca
+	apríl apríla apríli apríla aprílom apríla dubnům Dubno Dubno
+	máj mája máji mája májom mája Kvetnej květnům Kvetnej
+	jún júna júni Lipeň júnom júna júna červnům júna
+	júl júla júli júlom júla červencům júla júli
+	august augusta auguste augusta augustom augusta augusta srpnům augusta
+	septembra septembrom
+	október októbra októbri októbra októbrom októbra októbra říjnům októbra
+	november novembra novembra listopedem novembra novembra listopadům novembra
+	december decembra decembri decembrom decembra decembra prosincům decembra decembri
+"
 
 ZKRAT="$ZKRATCZ $ZKRATSK"
 ZKRAT="$(echo $ZKRAT | sed -r -e 's/ +/|/g')"
@@ -290,6 +335,10 @@ ZAMAT="$PZMATCZ $PZMATSK $ZAMATCZ $ZAMATSK"
 ZAMAT=$(echo $ZAMAT | sed -r -e 's/[ \t]+/|/g')
 PRODK="$PRODKCZ $PRODKSK"
 PRODK=$(echo $PRODK | sed -r -e 's/[ \t]+/|/g')
+PRCIS="$PRCISCZ $PRCISSK $MESICCZ $MESICSK"
+PRCIS=$(echo $PRCIS | sed -r -e 's/[ \t]+/|/g')
+MESIC="$MESICCZ $MESICSK"
+MESIC=$(echo $MESIC | sed -r -e 's/[ \t]+/|/g')
 
 for file in "$@"
 do
@@ -300,8 +349,11 @@ do
 	sed -r -i -e "N;s/([ \n\t~]+)($PRMAT)([ \n\t~]+)([[:alpha:]]+)([ \n\t]+)[\$]/\1\3\5\2\3\4~\$/gI;P;D;" "$file" # před matematikou + 1 další slovo
 	sed -r -i -e "N;s/[\$]([ \n\t]+)($ZAMAT)([ \n\t~]+)/\$~\2\3\1/gI;P;D;" "$file" # za matematikou
 	sed -r -i -e "N;s/([ \n\t~]+)($PRODK)[ \n\t~]+([\\]ref|[\\]eqref|\([\\]ref)/\1\2~\3/gI;P;D;" "$file" # před odkazy
+	sed -r -i -e "N;s/([ \n\t~]+)($PRCIS)([ \n\t]+)([[:digit:]])/\3\1\2~\4/gI;P;D;" "$file" # před čísly
+	sed -r -i -e "N;s/([[:digit:]]{1,2}\.)[ \n\t~]+([[:digit:]]{1,2}\.|$MESIC)[ \n\t~]+([[:digit:]]{4})/\1~\2~\3/gI;P;D;" "$file" # v datumech s rokem
+	sed -r -i -e "N;s/([[:digit:]]{1,2}\.)[ \n\t~]+([[:digit:]]{1,2}\.|$MESIC)/\1~\2/gI;P;D;" "$file" # v datumech bez roku
 	sed -r -i -e "N;s/\([\\]ref\{([^\}]*)\}\)/\\\eqref\{\1\}/gI;P;D;" "$file" # nahradit ošklivé odkazy na rovnice
-	sed -r -i -e "N;s/~{2,}/~/gI;P;D;" "$file" # opravit násobné vlnky
+	sed -r -i -e "N;s/(~){2,}/\1/gI;P;D;" "$file" # opravit násobné vlnky
 	sed -r -i -e "N;s/[ \n\t]*~[ \n\t]*/~/gI;P;D;" "$file" # smazat mezery kolem vlnek
 	sed -r -i -e "N;s/\n            /\n\t\t\t/gI;P;D;" "$file" # mezery na 3 odsazení
 	sed -r -i -e "N;s/\n        /\n\t\t/gI;P;D;" "$file" # mezery na 2 odsazení
@@ -310,3 +362,8 @@ do
 	sed -r -i -e "N;s/ *\n/\n/gI;P;D;" "$file" # smazat mezery na konci řádku
 	sed -r -i -e "N;s/\n */\n/gI;P;D;" "$file" # smazat mezery na začátku řádku
 done
+
+echo "Opravit dělení čísel:"
+grep --color=always -nE '[[:digit:]]{4,}' $@ # vypsat všechny čtveřice čísel (pro oddělení po 3)
+echo "Smazat spojovník před slovem krát:"
+grep --color=always -nE '\-krát' $@ #  # vypsat výskyty spojovníku před slovem krát
