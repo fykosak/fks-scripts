@@ -3,7 +3,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/config
 
-path=/network/data/www/fykos/rocnik${rocnik}
+path=/network/data/www/fykos/fykos.cz/rocnik${rocnik}
 
 if [ "x$1" = "x" ] ; then
 	echo "Usage: $(basename $0) [FILEs] ..."
@@ -36,6 +36,4 @@ for files in "$@" ; do
 			continue
 	esac
 	scp $files $user@$server:$path/$sfile
-	ssh $user@$server chown $user:fykos $path/$sfile
-	ssh $user@$server chmod 664 $path/$sfile
 done;
