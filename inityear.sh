@@ -15,6 +15,7 @@ fi
 mkdir problems
 cp -r "$TEMPLATE_PATH/year/problems/graphics" "./problems/graphics"
 cp  "$TEMPLATE_PATH/year/problems/web.tex" "./problems/web.tex"
+cp "$TEMPLATE_PATH/year/Deadline.inc" Deadline.inc
 cp "$TEMPLATE_PATH/year/Makefile.inc" Makefile.inc
 cp "$TEMPLATE_PATH/year/Makefile.conf.sample" Makefile.conf.sample
 cp "$TEMPLATE_PATH/year/Makefile.conf.sample" Makefile.conf
