@@ -15,10 +15,11 @@ fi
 mkdir problems
 mkdir results
 cp -r "$TEMPLATE_PATH/year/problems/graphics" "./problems/graphics"
-cp  "$TEMPLATE_PATH/year/problems/web.tex" "./problems/"
+cp "$TEMPLATE_PATH/year/problems/web.tex" "./problems/"
+cp "$TEMPLATE_PATH/year/Deadline.inc" .
 cp "$TEMPLATE_PATH/year/Makefile.inc" .
 cp "$TEMPLATE_PATH/year/Makefile.conf.sample" .
-cp "$TEMPLATE_PATH/year/Makefile.conf.sample" .
+cp "$TEMPLATE_PATH/year/Makefile.conf.sample" Makefile.conf
 cp "$TEMPLATE_PATH/year/Makefile" .
 cp "$TEMPLATE_PATH/year/results/"* ./results
 

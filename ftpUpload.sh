@@ -1,9 +1,9 @@
 #!/bin/bash
 
-rocnik=26
-user=***REMOVED***
-server=fykos.cz
-path=/network/data/www/fykos/rocnik${rocnik}
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $DIR/config
+
+path=/network/data/www/fykos/fykos.cz/rocnik${rocnik}
 
 if [ "x$1" = "x" ] ; then
 	echo "Usage: $(basename $0) [FILEs] ..."
@@ -20,16 +20,20 @@ table[6]=5
 table[7]=6
 table[8]=7
 
-for file in "$@" ; do
+for files in "$@" ; do
+	file=$(basename $files)
 	case $file in
 		reseni?-?.pdf)
-			scp $file $user@$server:$path/reseni/$(echo -n ${file:0:-5}${table[${file:8:1}]}.pdf)
+			sfile="reseni/$(echo -n ${file:0:-5}${table[${file:8:1}]}.pdf)"
 		;;
 		serie?.pdf)
-			scp $file $user@$server:$path/$file
+			sfile="$file"
 		;;
 		serial?.pdf)
-			scp $file $user@$server:$path/serial/$file
+			sfile="serial/$file"
 		;;
+		*)
+			continue
 	esac
+	scp $files $user@$server:$path/$sfile
 done;
