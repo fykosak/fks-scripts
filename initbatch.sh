@@ -5,6 +5,8 @@ TEMPLATE_PATH=$(dirname $0)/../templates
 PROBLEMS_DIR=problems
 PROB_COUNT=8
 
+YEAR=27
+
 # Initializes a directory for new series in current directory
 
 if [ "$1" = "" ] ; then
@@ -30,6 +32,7 @@ cd "./batch$1"
 mv batchB.tex batch$1.tex
 mv serialB.tex serial$1.tex
 mv uvodB.tex uvod$1.tex
+mv problemsB.tex problems$1.tex
 
 PREV=$(($1-1))
 sed -i "s/BATCHNO=B/BATCHNO=$1/" Makefile
@@ -37,7 +40,10 @@ sed -i "s/DEADLINE\\[B\\]/DEADLINE[$1]/" Makefile
 sed -i "s/DEADLINES\\[B\\]/DEADLINES[$1]/" Makefile
 sed -i "s/SOLVEDBATCHNO=AB/SOLVEDBATCHNO=$PREV/" Makefile
 sed -i "s/problemcount{PB}/problemcount{$PROB_COUNT}/" Makefile
+sed -i "s/\\\\setcounter{year}{Y}/\\\\setcounter{year}{$YEAR}/" batch$1.tex
+sed -i "s/\\\\setcounter{year}{Y}/\\\\setcounter{year}{$YEAR}/" problems$1.tex
 sed -i "s/\\\\setcounter{batch}{B}/\\\\setcounter{batch}{$1}/" batch$1.tex
+sed -i "s/\\\\setcounter{batch}{B}/\\\\setcounter{batch}{$1}/" problems$1.tex
 sed -i "s/vysledkyB/vysledky$PREV/" batch$1.tex
 
 # create problems

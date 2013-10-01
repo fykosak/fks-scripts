@@ -32,6 +32,9 @@ for files in "$@" ; do
 		serial?.pdf)
 			sfile="serial/$file"
 		;;
+		rocenka??.pdf)
+			sfile="../$file"
+		;;
 		*)
 			continue
 	esac
