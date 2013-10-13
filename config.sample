@@ -1,6 +1,6 @@
 #!/bin/bash
 
 user=     #FILLME
-rocnik=26 #ACTUAL YEAR
+rocnik=27 #ACTUAL YEAR
 server=fykos.cz
 
