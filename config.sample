@@ -1,6 +1,6 @@
 #!/bin/bash
 
-user=     #FILLME
-rocnik=27 #ACTUAL YEAR
+user=  #FILLME
 server=fykos.cz
-path=/network/data/www/fykos/fykos.cz/rocnik${rocnik}
+pathFYKOS=/network/data/www/fykos/fykos.cz/rocnik
+pathVYFUK=/network/data/www/fykos/fykos.cz/vyfuk/rocnik

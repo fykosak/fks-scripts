@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source semyr.sh
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/config
 
@@ -20,6 +22,8 @@ table[8]=7
 
 for files in "$@" ; do
 	file=$(basename $files)
+	semyr $files
+
 	case $file in
 		reseni?-?.pdf)
 			sfile="reseni/$(echo -n ${file:0:-5}${table[${file:8:1}]}.pdf)"
@@ -31,7 +35,7 @@ for files in "$@" ; do
 			sfile="serial/$file"
 		;;
 		rocenka??.pdf)
-			sfile="../$file"
+			sfile="../rocenky/$file"
 		;;
 		*)
 			continue
