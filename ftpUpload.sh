@@ -3,8 +3,6 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/config
 
-path=/network/data/www/fykos/fykos.cz/rocnik${rocnik}
-
 if [ "x$1" = "x" ] ; then
 	echo "Usage: $(basename $0) [FILEs] ..."
 	exit 1
