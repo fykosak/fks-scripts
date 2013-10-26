@@ -40,6 +40,7 @@ for files in "$@" ; do
 		*)
 			continue
 	esac
+#	echo "scp "$files $user"@"$server":"$path"/"$sfile
 	scp $files $user@$server:$path/$sfile
 	ssh $user@$server chown $user:fykos $path/$sfile
 	ssh $user@$server chmod 664 $path/$sfile
