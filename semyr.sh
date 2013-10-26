@@ -5,7 +5,7 @@ function semyr {
 	IFS='/' read -a array <<< "$filefull"
 	# delka retezce
 	for ((i=0; ; i++)) do
-		if [ "${array[$i]}" = "$file" ]; then
+		if [ "${array[$i]}" = "" ]; then
 			end=$i
 			break
 		fi
@@ -19,11 +19,13 @@ function semyr {
 			if [ "$fks" -ne "0" ]; then 
 				rocnik=${array[$i]:5}
 				path=$pathFYKOS$rocnik
+				seminar="fykos"
 				break
 			fi
 			if [ "$vfk" -ne "0" ] ; then 
 				rocnik=${array[$i]:5}
 				path=$pathVYFUK$rocnik
+				seminar="vyfuk"
 				break
 			fi
 		fi

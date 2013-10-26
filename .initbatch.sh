@@ -1,9 +1,10 @@
 #!/bin/bash
 
+source semyr.sh
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/config
 
-TEMPLATE_PATH=$(dirname $0)/../templates
 
 PROBLEMS_DIR=problems
 PROB_COUNT=8
