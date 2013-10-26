@@ -85,6 +85,7 @@ for file in *.tex *.tex.$seminar ; do
 # update data in files
 		sed -i "s/\\\\setcounter{year}{Y}/\\\\setcounter{year}{$rocnik}/" $file
 		sed -i "s/\\\\setcounter{batch}{B}/\\\\setcounter{batch}{$2}/"    $file
+		sed -i "s/\\\\setcounter{solvedbatch}{AB}/\\\\setcounter{solvedbatch}{$PREV}/"    $file
 		sed -i "s/vysledkyB/vysledky$PREV/"                               $file
 		sed -i "s/SEM/$seminar/"                                          $file
 		mv $file ${array[0]}$2${array[1]:0:4} # cut .fykos|.vyfuk
