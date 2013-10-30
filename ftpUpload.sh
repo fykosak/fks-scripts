@@ -1,8 +1,7 @@
 #!/bin/bash
 
-source semyr.sh
-
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $DIR/semyr.sh
 source $DIR/config
 
 if [ "x$1" = "x" ] ; then
