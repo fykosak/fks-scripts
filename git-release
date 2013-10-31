@@ -1,0 +1,39 @@
+#!/bin/bash
+
+if [ "x$1" == "x" ] ; then
+	echo "Usage: $0 <branch name>"
+	echo "  <branch name> branch to be merged with its defined merger branch"
+	echo "                and pushed to the origin"
+	echo
+	exit 1
+fi
+
+branch=$1
+
+# What branch is to be merged
+declare -A merged
+merged[web]=test
+merged[test]=dev
+
+# What options to the merge
+declare -A options
+options[web]=--no-ff
+options[test]=
+
+merged=${merged[$branch]}
+options=${options[$branch]}
+
+current_branch=`git branch | sed -n "/^\*/{s/^\* //;p}"`
+
+echo "Merging..."
+
+git checkout $branch
+git merge $merged $options
+git checkout $current_branch
+
+echo "Pushing..."
+git push origin $branch
+
+echo
+echo "Branch $branch released."
+echo
