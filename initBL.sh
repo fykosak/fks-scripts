@@ -61,7 +61,9 @@ elif [ "$1" = "l" ] ; then
 	dirpath=leaflet
 # help
 else
-	echo "Usage: $0 l|b"
+	echo "Usage: $0 l|b <batchno> [<probcount>]"
+	echo "           b   initializes a batch"
+	echo "           l   initializes a leaflet"
 	exit 1
 fi
 
