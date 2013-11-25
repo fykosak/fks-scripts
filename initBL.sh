@@ -78,8 +78,13 @@ else
 	rm *.fykos
 fi
 
+# cut .fykos|.vyfuk
+for file in *.$seminar ; do
+	mv $file ${file%.$seminar}
+done
+
 # rename batch dependend values
-for file in *.tex *.tex.$seminar ; do
+for file in *.tex; do
 	IFS='B' read -a array <<< "$file"
 	if [ "${array[1]}" != "" ]; then
 # update data in files
@@ -88,7 +93,7 @@ for file in *.tex *.tex.$seminar ; do
 		sed -i "s/\\\\setcounter{solvedbatch}{AB}/\\\\setcounter{solvedbatch}{$PREV}/"    $file
 		sed -i "s/vysledkyB/vysledky$PREV/"                               $file
 		sed -i "s/SEM/$seminar/"                                          $file
-		mv $file ${array[0]}$2${array[1]:0:4} # cut .fykos|.vyfuk
+		mv $file ${array[0]}$2${array[1]:0:4}
 	fi
 done
 
