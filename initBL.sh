@@ -102,8 +102,6 @@ done
 sed -i "s/\\\\setcounter{year}{Y}/\\\\setcounter{year}{$rocnik}/" Makefile
 sed -i "s/BATCHNO=B$/BATCHNO=$2/"                                 Makefile
 sed -i "s/SOLVEDBATCHNO=AB/SOLVEDBATCHNO=$PREV/"                  Makefile
-sed -i "s/DEADLINE\\[B\\]/DEADLINE[$2]/"                          Makefile
-sed -i "s/DEADLINES\\[B\\]/DEADLINES[$2]/"                        Makefile
 sed -i "s/problemcount{PB}/problemcount{$PROB_COUNT}/"            Makefile
 sed -i "s/problemslist/$PROBLEMSLIST/"                            Makefile
 sed -i "s/resultslist/$RESULTSLIST/"                              Makefile
