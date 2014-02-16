@@ -1,0 +1,9 @@
+#!/bin/bash
+
+PATHS_bin="*.sh"
+PATHS_share="export2csv.xsl semyr"
+PATHS_conf=config
+
+PREFIX_bin=/usr/local/bin
+PREFIX_share=/usr/local/share/fks
+PREFIX_conf=/etc/fks

@@ -12,6 +12,40 @@ function print_help {
 	exit 1
 }
 
+function render_template {
+	version=`git describe $1 --tags`
+	for f in "$WORKDIR/DEBIAN"/*.tpl ; do
+		r=${f%.tpl}
+
+		sed "s/%version%/$version/" <$f |\
+		sed "s#%prefix%#$PREFIX#" >$r
+		[ -x $f ] && chmod 755 $r
+	done
+	[ -f "$WORKDIR$PREFIX/deb.info" ] && rm "$WORKDIR$PREFIX/deb.info"
+}
+
+function package_name {
+	set -o pipefail
+	git show $1:DEBIAN/control.tpl | sed -n "/^Package:/{s/^Package: *\(.*\)/\1/;p}" ||	die "Cannot find DEBIAN/control.tpl"
+}
+
+function load_info {
+	set -o pipefail
+	file=`mktemp`
+	git show $1:deb.info>$file 2>/dev/null
+	if [ $? -eq 0 ] ; then
+		. $file
+		rm $file
+	else
+		METAPACKAGE=1
+	fi
+}
+
+function die {
+	echo "$@" 1>&2
+	exit 1
+}
+
 GITDIR=$PWD
 REFSPEC=master
 BUILDDIR=$PWD
@@ -38,43 +72,41 @@ while [ $# -ge 1 ] ; do
 	shift
 done
 
-if [ ! -f "$GITDIR/deb.info" ] ; then
-	echo "File deb.info not present in the repository."
-	exit 1
-fi
+[ -d "$GITDIR/DEBIAN" ] || die "Directory DEBIAN not present in the repository."
 
-. "$GITDIR/deb.info"
-WORKDIR="/tmp/$PKG_NAME"
+
 export GIT_DIR="$GITDIR/.git"
+PKG_NAME=`package_name $REFSPEC`
 
-function render_template {
-	version=`git describe $1 --tags`
-	for f in "$WORKDIR/DEBIAN"/*.tpl ; do
-		r=${f%.tpl}
-
-		sed "s/%version%/$version/" <$f |\
-		sed "s#%prefix%#$PREFIX#" >$r
-		[ -x $f ] && chmod 755 $r
-	done
-}
+load_info
+WORKDIR="/tmp/$PKG_NAME"
 
 rm -rf $WORKDIR
 mkdir $WORKDIR
-mkdir -p "$WORKDIR$PREFIX"
 
-#[ -f $GITDIR/.gitattributes ] && sed -i "1iDEBIAN export-ignore" $GITDIR/.gitattributes
-#git archive --worktree-attributes --prefix="${PREFIX#/}/" "$REFSPEC" | tar -x -C "$WORKDIR"
-paths=$(for p in `echo "$GITDIR"/* | sed "s#$GITDIR/DEBIAN##"` ; do basename $p ; done | xargs echo)
+# everything goes into the same directory
+if [ "x$PREFIX" != "x" ] ; then
+	paths=$(for p in `echo "$GITDIR"/* | sed "s#$GITDIR/DEBIAN##"` ; do basename $p ; done | xargs echo)
 
-git archive --prefix="${PREFIX#/}/" "$REFSPEC" $paths | tar -x -C "$WORKDIR"
-#[ -f $GITDIR/.gitattributes ] && git checkout "$REFSPEC" -- $GITDIR/.gitattributes
+	mkdir -p "$WORKDIR$PREFIX"
+	git archive --prefix="${PREFIX#/}/" "$REFSPEC" $paths | tar -x -C "$WORKDIR"
+elif [ "x$METAPACKAGE" = "x" ] ; then # special directories for predefined groups
+	for type in bin share conf ; do
+		prefname="PREFIX_$type"
+		prefix=${!prefname}
+		pathname="PATHS_$type"
+		paths=${!pathname}
+	
+		mkdir -p "$WORKDIR$prefix"
+		git archive --prefix="${prefix#/}/" "$REFSPEC" $paths | tar -x -C "$WORKDIR"
+	done
+fi
 
 git archive "$REFSPEC" DEBIAN | tar -x -C "$WORKDIR"
 
 render_template "$REFSPEC"
 
-
 fakeroot dpkg-deb --build "$WORKDIR" "$BUILDDIR"
 
-#rm -rf $WORKDIR
+rm -rf "$WORKDIR"
 unset GIT_DIR

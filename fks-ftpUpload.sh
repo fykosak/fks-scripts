@@ -1,8 +1,8 @@
 #!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source $DIR/semyr.sh
-source $DIR/config
+source /use/local/share/fks/semyr
+source /etc/fks/config
 
 if [ "x$1" = "x" ] ; then
 	echo "Usage: $(basename $0) [FILEs] ..."
