@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source /use/local/share/fks/semyr
+source /usr/local/share/fks/semyr
 source /etc/fks/config
 
 PROBLEMS_DIR=problems
