@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PATHS_bin="*.sh"
-PATHS_share="export2csv.xsl semyr"
+PATHS_share="*.xsl semyr"
 PATHS_conf=config
 
 PREFIX_bin=/usr/local/bin

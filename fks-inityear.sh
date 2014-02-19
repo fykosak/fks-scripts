@@ -21,7 +21,7 @@ cp "$TEMPLATE_PATH/year/Makefile.inc" .
 cp "$TEMPLATE_PATH/year/Makefile.conf.sample" .
 cp "$TEMPLATE_PATH/year/Makefile.conf.sample" Makefile.conf
 cp "$TEMPLATE_PATH/year/Makefile" .
-cp "$TEMPLATE_PATH/year/results/"* ./results
+cp "$TEMPLATE_PATH/year/data/"* ./data
 
 # create dependency Makefile part
 MAKEFILE="problems/Makefile.inc"
