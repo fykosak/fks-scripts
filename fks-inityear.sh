@@ -15,6 +15,7 @@ fi
 # create empty year structure
 mkdir problems
 mkdir results
+mkdir data
 cp -r "$TEMPLATE_PATH/year/problems/graphics" "./problems/graphics"
 cp "$TEMPLATE_PATH/year/problems/web.tex" "./problems/"
 cp "$TEMPLATE_PATH/year/Deadline.inc" .
