@@ -5,7 +5,7 @@ source /etc/fks/config
 DIST=fks
 SECTION=main # ?? it's required
 
-if [ "x$1" = "x" ] ; then
+if [ "x$1" = "x" -o "$1$ = "-h" ] ; then
 	echo "Usage: $0 [-d dist] deb-file(s) ..."
 	echo "   Default dist is '$DIST'."
 	exit 1
