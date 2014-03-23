@@ -1,6 +1,7 @@
 #!/bin/bash
 
-TEMPLATE_PATH=$(dirname $0)/../templates
+source /etc/fks/config
+
 PROBLEMS_DIR=problems
 
 # Initializes a year structure in current directory
