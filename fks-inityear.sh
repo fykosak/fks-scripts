@@ -43,3 +43,6 @@ for B in $(seq 1 $2); do
 	done
 done
 
+echo "Year initialized. Before commiting do not forget to modify contest specific information."
+echo "This mostly applies to problem labels in SOAP requests(!)"
+
