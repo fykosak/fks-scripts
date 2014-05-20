@@ -22,7 +22,7 @@ scp $@ $pkg_user@$pkg_server:/tmp/
 
 # add to repo
 for file in "$@" ; do
-	ssh $pkg_user@$pkg_server reprepro -S $SECTION -b $pkg_path/$DIST includedeb $DIST /tmp/$file
+	ssh $pkg_user@$pkg_server reprepro -S $SECTION -b $pkg_path/$DIST includedeb $DIST /tmp/`basename $file`
 done
 
 # sign the repo
