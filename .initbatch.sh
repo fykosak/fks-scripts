@@ -1,9 +1,9 @@
 #!/bin/bash
 
-source semyr.sh
+source /usr/local/share/fks/semyr.sh
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source $DIR/config
+source /etc/fks/config
 
 
 PROBLEMS_DIR=problems

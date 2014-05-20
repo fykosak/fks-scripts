@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#
+# Task upload
+#
+# SSH user at remote server
+user=  #FILLME
+server=fykos.cz
+pathFYKOS=/network/data/www/fykos/fykos.cz/rocnik
+pathVYFUK=/network/data/www/fykos/fykos.cz/vyfuk/rocnik
+
+#
+# Package upload
+#
+pkg_user=
+pkg_server=fykos.cz
+pkg_path=/network/data/www/fykos/packages.fykos.cz
+
+#
+# Initialization
+#
+TEMPLATE_PATH=/usr/local/share/fks/templates
+
+# rozdil mezi zadanim a resenim
+fksshift=1
+vfkshift=2
