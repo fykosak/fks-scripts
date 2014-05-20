@@ -86,7 +86,7 @@ mkdir $WORKDIR
 
 # everything goes into the same directory
 if [ "x$PREFIX" != "x" ] ; then
-	paths=$(for p in `echo "$GITDIR"/* | sed "s#$GITDIR/DEBIAN##"` ; do basename $p ; done | xargs echo)
+	paths=`git ls-tree --name-only $REFSPEC | sed "s#DEBIAN##"`
 
 	mkdir -p "$WORKDIR$PREFIX"
 	git archive --prefix="${PREFIX#/}/" "$REFSPEC" $paths | tar -x -C "$WORKDIR"
