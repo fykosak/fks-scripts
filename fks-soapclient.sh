@@ -21,4 +21,4 @@ DEBUG="--server-response --no-check-certificate"
 wget --post-file="$POST" --header="Content-Type: text/xml" --header="SOAPAction: \"GetStats\"" $DEBUG "$1" -O "$3"
 [ $? = 0 ] || rm "$3"
 
-# [ -n $HAS_TEMP ] && rm "$POST"
+[ -n $HAS_TEMP ] && rm "$POST"

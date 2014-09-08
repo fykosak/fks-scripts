@@ -19,11 +19,15 @@
 	</xsl:template>
 
 	<xsl:template match="task">
+		<xsl:if test="not(@tasknr)">
+			<xsl:message terminate="yes">
+				Error: You are using incompatible XML with statistics, it doesn't contain 'tasknr' attribute.
+				Please refresh your statistics files by calling appropriate web service request.
+			</xsl:message>
+		</xsl:if>
 		<xsl:value-of select="$series"/>
 		<xsl:text>;</xsl:text>
-		<xsl:call-template name="label2num">
-			<xsl:with-param name="label" select="@label"/>
-		</xsl:call-template>
+		<xsl:value-of select="@tasknr"/>	
 		<xsl:text>;</xsl:text>
 		<xsl:value-of select="points"/>	
 		<xsl:text>;</xsl:text>
@@ -32,17 +36,6 @@
 		<xsl:value-of select="solvers"/>
 		<xsl:text>
 </xsl:text>
-	</xsl:template>
-
-	<!-- map from label to number -->
-	<xsl:template name="label2num">
-		<xsl:param name="label"/>
-		<xsl:choose>
-			<xsl:when test="$label = 'P'">6</xsl:when>
-			<xsl:when test="$label = 'E'">7</xsl:when>
-			<xsl:when test="$label = 'S'">8</xsl:when>
-			<xsl:otherwise><xsl:value-of select="$label"/></xsl:otherwise>
-		</xsl:choose>
 	</xsl:template>
 </xsl:stylesheet>
 
