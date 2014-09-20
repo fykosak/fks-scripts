@@ -112,7 +112,9 @@ if [ "$1" = "b" ]; then
 	cd "../$PROBLEMS_DIR"
 	for P in $(seq 1 $PROB_COUNT); do
 		FILENAME="problem$2-$P.tex"
-		cp "$TEMPLATE_PATH/year/problems/problemB-P.tex" "$FILENAME"
+		TEMPLATE="$TEMPLATE_PATH/year/problems/problemB-P.tex"
+		[ -f $TEMPLATE ] || TEMPLATE=${TEMPLATE}.$seminar # fallback to universal version
+	   	cp "$TEMPLATE" "$FILENAME"
 		sed -i "s/\\\\probbatch{B}/\\\\probbatch{$2}/;s/\\\\probno{P}/\\\\probno{$P}/" $FILENAME
 	done
 fi
