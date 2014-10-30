@@ -106,7 +106,7 @@ git archive "$REFSPEC" DEBIAN | tar -x -C "$WORKDIR"
 
 render_template "$REFSPEC"
 
-fakeroot dpkg-deb --build "$WORKDIR" "$BUILDDIR"
+fakeroot dpkg-deb -Zgzip --build "$WORKDIR" "$BUILDDIR"
 
 rm -rf "$WORKDIR"
 unset GIT_DIR
