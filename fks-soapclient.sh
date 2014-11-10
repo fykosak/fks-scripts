@@ -22,3 +22,5 @@ wget --post-file="$POST" --header="Content-Type: text/xml" --header="SOAPAction:
 [ $? = 0 ] || rm "$3"
 
 [ -n "$HAS_TEMP" ] && rm "$POST"
+
+true # when the condition above fails, still have exit code 0
