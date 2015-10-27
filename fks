@@ -58,5 +58,26 @@ _fks-initTempl()
         return 0
     fi
 }
+
+_fks-initBL()
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+# B-L
+    if [[ ${prev} == fks-initBL.sh ]]; then
+        opts="B L"
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+# batch
+    if [[ ${COMP_WORDS[COMP_CWORD-2]} == fks-initBL.sh ]]; then
+        opts="1 2 3 4 5 6 7"
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
 complete -F _fks-moveToFykos fks-moveToFykos.sh
 complete -F _fks-initTempl fks-initTempl.sh
+complete -F _fks-initBL fks-initBL.sh
