@@ -1,0 +1,62 @@
+# bash completion
+#
+# copy to /etc/bash_completion.d/
+#
+
+_fks-moveToFykos() 
+{
+    . /etc/fks/config
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+# batch
+    if [[ ${prev} == fks-moveToFykos.sh ]]; then
+        opts="1 2 3 4 5 6"
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+# problem id
+    if [[ ${COMP_WORDS[COMP_CWORD-2]} == fks-moveToFykos.sh ]]; then
+        opts="1 2 3 4 5 6 7 8"
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+# problem name
+    if [[ ${COMP_WORDS[COMP_CWORD-3]} == fks-moveToFykos.sh ]]; then
+        tmp=`pwd`/$templRepoPath/problems
+        tmp=`ls $tmp`
+#        opts=`echo $tmp | sed "s/[J|N|P|E|S]-R[0-9]+S[0-9]-[0-9]+-\([a-z|_]*\)\.tex/\1/g"`
+        opts=`echo $tmp | sed "s/\([J|N|P|E|S]\)-R[0-9]*S[0-9]-[0-9]*-\([a-z|_]*\)\.tex/\1-\2/g"`
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+
+_fks-initTempl()
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+# year
+    if [[ ${prev} == fks-initTempl.sh ]]; then
+        opts=`seq 1 40`
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+# batch
+    if [[ ${COMP_WORDS[COMP_CWORD-2]} == fks-initTempl.sh ]]; then
+        opts="1 2 3 4 5 6"
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+# problrm type
+    if [[ ${COMP_WORDS[COMP_CWORD-3]} == fks-initTempl.sh ]]; then
+        opts="J N P E S"
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _fks-moveToFykos fks-moveToFykos.sh
+complete -F _fks-initTempl fks-initTempl.sh

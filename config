@@ -24,3 +24,8 @@ TEMPLATE_PATH=/usr/local/share/fks/templates
 # rozdil mezi zadanim a resenim
 fksshift=1
 vfkshift=2
+
+#
+# path to fykos-ulohy relatively to fykosXX (or absolutely)
+#
+templRepoPath=../fykos-ulohy
