@@ -2,8 +2,8 @@
 
 PATHS_bin="*.sh"
 PATHS_share="*.xsl semyr"
-PATHS_conf=config
+PATHS_conf="fks/config bash_completion.d/*"
 
 PREFIX_bin=/usr/local/bin
 PREFIX_share=/usr/local/share/fks
-PREFIX_conf=/etc/fks
+PREFIX_conf=/etc
