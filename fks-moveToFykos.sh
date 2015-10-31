@@ -41,6 +41,7 @@ fi
 
 oldbranch=`git branch | cut -d" " -f 2 | head -n 1`
 git checkout -b $branch
+git filter-branch -f --prune-empty --index-filter 'git rm --cached --ignore-unmatch problems/.gitignore'
 git filter-branch --subdirectory-filter problems -f
 git filter-branch -f --prune-empty --index-filter 'git rm --cached --ignore-unmatch $(git ls-files | grep -v '$file')'
 
