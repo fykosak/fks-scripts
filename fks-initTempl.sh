@@ -20,7 +20,7 @@ name=$4
 fname=`iconv -f utf8 -t ascii//TRANSLIT <<< $name | 
         sed "s/ /_/g" | 
         tr '[:upper:]' '[:lower:]' |
-        sed "s/[.,;:?!<>\/\\\"\']//g"`
+        sed "s/[.,;:?!<> \/ \\ \" \' ( )]//g"`
 
 # validate input
 if [[ !($year =~ ^[0-9]+$) ]]; then
