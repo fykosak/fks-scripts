@@ -41,13 +41,13 @@ fi
 
 oldbranch=`git branch | cut -d" " -f 2 | head -n 1`
 git checkout -b $branch
-git filter-branch -f --prune-empty --index-filter 'git rm --cached --ignore-unmatch problems/.gitignore'
+#git filter-branch -f --prune-empty --index-filter 'git rm --cached --ignore-unmatch problems/.gitignore'
+git filter-branch -f --prune-empty --index-filter 'git rm --cached --ignore-unmatch $(git ls-files | grep -v 'problems/$file')'
 git filter-branch --subdirectory-filter problems -f
-git filter-branch -f --prune-empty --index-filter 'git rm --cached --ignore-unmatch $(git ls-files | grep -v '$file')'
 
 cat $file | 
 tr '\n' '\r' | 
-sed "s/[^\$.*\r].*% --- CUT HERE --- (do not edit this and above this line)\r//g" |
+sed "s/[^\$.*\r].*% --- CUT HERE --- (do not edit this line and above this line)\r//g" |
 sed "s/% --- CUT HERE ---[^\$.*\r].*//g" |
 sed "s/probbatch{.}/probbatch{$1}/g" |
 sed "s/probno{.}/probno{$2}/g" |
