@@ -26,23 +26,41 @@ if [[ !($2 =~ ^[1-8]+$) ]]; then
     exit -1
 fi
 
+if [ "`pwd`" != "`git rev-parse --show-toplevel`" ]; then
+    echo "Run in repository toplevel: "`git rev-parse --show-toplevel`
+    exit -1
+fi
+
+if [ `git status | grep -E 'Untracked|Changes' | wc -l` != 0 ]; then
+    echo "git status is not clean in fykosXX."
+    echo "Run \`git reset --hard HEAD && git clean -f\` only if you know what are you doing..."
+    exit 1
+fi
+
 cd $ulohy
 
-file=`echo $3 | sed "s/[J|N|P|E|S][-]\([a-z|_]*\)/\1/g"`
-echo $file
+if [ `git status | grep -E 'Untracked|Changes' | wc -l` != 0 ]; then
+    echo "git status is not clean in fykos-ulohy."
+    echo "Run \`git reset --hard HEAD && git clean -f\` only if you know what are you doing..."
+    exit 1
+fi
+
+file=`sed "s/[J|N|P|E|S][-]\([a-z|_]*\)/\1/g" <<< $3`
 file="?-R*S*-?-$file.tex"
-echo $file
 file=`cd problems;ls $file`
-echo $file
 if [[ !($file =~ [a-z|_]+) ]]; then
     echo "Bad file format:" $file"."
     exit -1 
 fi
 
+prefix=`sed 's/\([J|N|P|E|S]-R[0-9]*S[0-9]-[0-9]\).*/\1/' <<< $file`
+#echo -e $prefix"\n"
+
+
 oldbranch=`git branch | cut -d" " -f 2 | head -n 1`
 git checkout -b $branch
-#git filter-branch -f --prune-empty --index-filter 'git rm --cached --ignore-unmatch problems/.gitignore'
-git filter-branch -f --prune-empty --index-filter 'git rm --cached --ignore-unmatch $(git ls-files | grep -v 'problems/$file')'
+echo "git filter-branch: remove other files"
+git filter-branch -f --prune-empty --index-filter 'git rm --cached --ignore-unmatch $(git ls-files | grep -v '$prefix')' >/dev/null 2>&1
 git filter-branch --subdirectory-filter problems -f
 
 cat $file | 
@@ -54,6 +72,49 @@ sed "s/probno{.}/probno{$2}/g" |
 tr '\r' '\n' > tmp.tex
 mv tmp.tex $file
 
+cat << EOF
+
+################################################################################
+### Modified files from fykos-ulohy ############################################
+################################################################################
+
+EOF
+
+git ls-files
+
+cat << EOF
+
+################################################################################
+
+EOF
+
+makefileinc=""
+for f in `git ls-files`; do
+    ext="${f##*.}"
+    echo -e "\n############ "$f":"
+    case $ext in
+        "tex"|"plt")
+            sed  -i "s/$prefix/problem$1-$2/g" $f
+            git diff $f
+            git add $f
+            ;;
+        *)
+            makefileinc=$makefileinc" "$f
+            ;;
+    esac
+    git mv $f `sed "s/$prefix/problem$1-$2/g" <<< $f`
+done
+echo ""
+makefileinc=`sed "s/$prefix/problem$1-$2/g" <<< $makefileinc`
+
+cat << EOF
+
+################################################################################
+makefileinc = $makefileinc
+################################################################################
+
+EOF
+
 git add $file
 git mv $file problem"$1"-"$2.tex"
 git commit -m "["$1"-"$2"] rename"
@@ -61,18 +122,49 @@ git checkout $oldbranch
 
 cd $workpwd
 
+
 git remote add ulohy-subtree $ulohy
 git fetch ulohy-subtree $branch
 git subtree merge -P problems/ ulohy-subtree/$branch -m "["$1"-"$2"] load problem from repository"
 git remote rm ulohy-subtree
 
 cd $ulohy
-
 git branch -D $branch
-
-git rm problems/$file
+git ls-files | grep $prefix | xargs git rm
 git commit -m "[$file] moved to repository"
-
 cd $workpwd
 
-echo "Zkontrolujte stav a pushněte ve 'fykos-ulohy' a zde."
+cat << EOF
+
+################################################################################
+### Modifications in problems/Makefile.inc #####################################
+################################################################################
+
+EOF
+
+sed -i "s|\(^problem$1_$2=.*\)\$|\1 $makefileinc|g" problems/Makefile.inc
+git diff problems/Makefile.inc
+git add problems/Makefile.inc
+git commit --amend --no-edit
+
+cat << EOF
+
+################################################################################
+Zkontrolujte stav repozitářů
+  * fykosXX:
+    * problems/Makefile.inc
+    * problems/problem$1_$2.tex
+`ls problems/graphics/color/problem$1-$2* problems/graphics/problem$1-$2* | sed 's/\(.*\)/    * \1/g'`
+
+    * vše je commitnuto
+    * je to přeložitelné
+
+  * fykos-ulohy
+    * odstranění úlohy
+    * odstranění veškeré odpovídající grafiky
+    * vše je commitnuto
+
+Automaticky prováděné změny v souborech byly uvedeny výše mezi ################.
+
+Po kontrole pushněte ve 'fykos-ulohy' a zde.
+EOF
