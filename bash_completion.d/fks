@@ -67,7 +67,7 @@ _fks-initBL()
     prev="${COMP_WORDS[COMP_CWORD-1]}"
 # B-L
     if [[ ${prev} == fks-initBL.sh ]]; then
-        opts="B L"
+        opts="b l"
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
         return 0
     fi
