@@ -7,7 +7,6 @@
 
 source /etc/fks/config
 
-
 ulohy=$templRepoPath
 branch="problem"$1"-"$2"-branch"
 workpwd=`pwd`
@@ -115,17 +114,30 @@ makefileinc = $makefileinc
 
 EOF
 
-git add $file
-git mv $file problem"$1"-"$2.tex"
+git mv problem"$1"-"$2"* problem"$1"-"$2.tex"
 git commit -m "["$1"-"$2"] rename"
 git checkout $oldbranch
 
 cd $workpwd
 
-
 git remote add ulohy-subtree $ulohy
 git fetch ulohy-subtree $branch
 git subtree merge -P problems/ ulohy-subtree/$branch -m "["$1"-"$2"] load problem from repository"
+conflict=`git status | grep "both added" | tr -s " " | cut -d " " -f 3`
+
+cat << EOF
+
+################################################################################
+### Merge conflict -- checkout theirs ##########################################
+### (no problem; only rewrites empty problemX-Y.tex in fykosXX #################
+################################################################################
+### $conflict
+################################################################################
+
+EOF
+
+git checkout --theirs $conflict
+git add $conflict
 git remote rm ulohy-subtree
 
 cd $ulohy
@@ -145,7 +157,7 @@ EOF
 sed -i "s|\(^problem$1_$2=.*\)\$|\1 $makefileinc|g" problems/Makefile.inc
 git diff problems/Makefile.inc
 git add problems/Makefile.inc
-git commit --amend --no-edit
+git commit -m "["$1"-"$2"] merge to repo"
 
 cat << EOF
 
