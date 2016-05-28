@@ -114,7 +114,8 @@ if [ "$1" = "b" ]; then
 		FILENAME="problem$2-$P.tex"
 		TEMPLATE="$TEMPLATE_PATH/year/problems/problemB-P.tex.$seminar"
 	   	cp "$TEMPLATE" "$FILENAME"
-		sed -i "s/\\\\probbatch{B}/\\\\probbatch{$2}/;s/\\\\probno{P}/\\\\probno{$P}/" $FILENAME
+        SEMINAR=`tr '[:lower:]' '[:upper:]' <<< $seminar`$rocnik
+		sed -i "s/\\\\probbatch{B}/\\\\probbatch{$2}/;s/\\\\probno{P}/\\\\probno{$P}/;s/\\\\probsource{SEMY}/\\\\probsource{$SEMINAR}" $FILENAME
 	done
 fi
 

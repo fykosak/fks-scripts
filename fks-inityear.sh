@@ -13,18 +13,19 @@ fi
 
 
 # create empty year structure
-mkdir problems
-mkdir results
-mkdir data
+mkdir -p problems
+mkdir -p results
+mkdir -p data
+mkdir -p todo
 cp -r "$TEMPLATE_PATH/year/problems/graphics" "./problems/graphics"
-cp "$TEMPLATE_PATH/year/problems/web.tex" "./problems/"
 cp "$TEMPLATE_PATH/year/Deadline.inc" .
 cp "$TEMPLATE_PATH/year/Makefile.inc" .
 cp "$TEMPLATE_PATH/year/.gitignore" .
 cp "$TEMPLATE_PATH/year/Makefile.conf.sample" .
-cp "$TEMPLATE_PATH/year/Makefile.conf.sample" Makefile.conf
+#cp "$TEMPLATE_PATH/year/Makefile.conf.sample" Makefile.conf
 cp "$TEMPLATE_PATH/year/Makefile" .
 cp "$TEMPLATE_PATH/year/data/"* ./data
+cp "$TEMPLATE_PATH/year/todo/"* ./todo
 
 # create dependency Makefile part
 MAKEFILE="problems/Makefile.inc"
@@ -47,7 +48,6 @@ done
 echo "Year initialized. Before commiting do not forget to modify contest specific information."
 echo "This mostly applies to:"
 echo "    - problem labels in SOAP requests(!)"
-echo "    - contest name in problems/web.tex"
-echo "    - contest name in Makefile.inc"
+echo "    - contest name in Makefile.conf.sample"
 
 
