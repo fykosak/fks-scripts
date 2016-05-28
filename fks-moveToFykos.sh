@@ -10,6 +10,8 @@ source /etc/fks/config
 ulohy=$templRepoPath
 branch="problem"$1"-"$2"-branch"
 workpwd=`pwd`
+source /usr/local/share/fks/semyr
+semyr ""
 
 if [ $# -le 2 ]; then
     echo "Usage: fks-moveToFykos.sh <batch> <probNo> <name in fykos-ulohy>"
@@ -62,12 +64,14 @@ echo "git filter-branch: remove other files"
 git filter-branch -f --prune-empty --index-filter 'git rm --cached --ignore-unmatch $(git ls-files | grep -v '$prefix')' >/dev/null 2>&1
 git filter-branch --subdirectory-filter problems -f
 
+SEMINAR=`tr '[:lower:]' '[:upper:]' <<< $seminar`$rocnik
 cat $file | 
 tr '\n' '\r' | 
 sed "s/[^\$.*\r].*% --- CUT HERE --- (do not edit this line and above this line)\r//g" |
 sed "s/% --- CUT HERE ---[^\$.*\r].*//g" |
 sed "s/probbatch{.}/probbatch{$1}/g" |
 sed "s/probno{.}/probno{$2}/g" |
+sed "s/probcontest{[^}]*}/probcontest{$SEMINAR}/g" |
 tr '\r' '\n' > tmp.tex
 mv tmp.tex $file
 
