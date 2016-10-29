@@ -71,7 +71,7 @@ sed "s/[^\$.*\r].*% --- CUT HERE --- (do not edit this line and above this line)
 sed "s/% --- CUT HERE ---[^\$.*\r].*//g" |
 sed "s/probbatch{.}/probbatch{$1}/g" |
 sed "s/probno{.}/probno{$2}/g" |
-sed "s/probcontest{[^}]*}/probcontest{$SEMINAR}/g" |
+sed "s/probsource{[^}]*}/probsource{$SEMINAR}/g" |
 tr '\r' '\n' > tmp.tex
 mv tmp.tex $file
 
