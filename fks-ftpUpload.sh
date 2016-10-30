@@ -30,6 +30,9 @@ for files in "$@" ; do
 		serie?.pdf)
 			sfile="$file"
 		;;
+		leaflet?.pdf)
+			sfile="leaflet/$file"
+		;;
 		zadani?.pdf)
 			sfile="serie${file:6:1}.pdf"
 		;;
