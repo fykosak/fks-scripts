@@ -115,7 +115,12 @@ if [ "$1" = "b" ]; then
 		TEMPLATE="$TEMPLATE_PATH/year/problems/problemB-P.tex.$seminar"
 	   	cp "$TEMPLATE" "$FILENAME"
         SEMINAR=`tr '[:lower:]' '[:upper:]' <<< $seminar`$rocnik
-		sed -i "s/\\\\probbatch{B}/\\\\probbatch{$2}/;s/\\\\probno{P}/\\\\probno{$P}/;s/\\\\probsource{SEMY}/\\\\probsource{$SEMINAR}" $FILENAME
+		sed -i "s/\\\\probbatch{B}/\\\\probbatch{$2}/;s/\\\\probno{P}/\\\\probno{$P}/" $FILENAME
+        if [ "$SEMINAR" != "FYKOS" ]; then
+            sed -i "s/\\\\probsource{SEMY}/\\\\probsource{$SEMINAR}/" $FILENAME
+        else
+            sed -i "s/\\\\probsource{SEMY}/\\\\probsource{}/" $FILENAME
+        fi
 	done
 fi
 
