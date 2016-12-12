@@ -113,14 +113,14 @@ if [ "$1" = "b" ]; then
 	for P in $(seq 1 $PROB_COUNT); do
 		FILENAME="problem$2-$P.tex"
 		TEMPLATE="$TEMPLATE_PATH/year/problems/problemB-P.tex.$seminar"
-	   	cp "$TEMPLATE" "$FILENAME"
-        SEMINAR=`tr '[:lower:]' '[:upper:]' <<< $seminar`$rocnik
+		cp "$TEMPLATE" "$FILENAME"
+		SEMINAR=`tr '[:lower:]' '[:upper:]' <<< $seminar`$rocnik
 		sed -i "s/\\\\probbatch{B}/\\\\probbatch{$2}/;s/\\\\probno{P}/\\\\probno{$P}/" $FILENAME
-        if [ "$SEMINAR" != "FYKOS" ]; then
-            sed -i "s/\\\\probsource{SEMY}/\\\\probsource{$SEMINAR}/" $FILENAME
-        else
-            sed -i "s/\\\\probsource{SEMY}/\\\\probsource{}/" $FILENAME
-        fi
+		if [ "$SEMINAR" != "FYKOS" ]; then
+			sed -i "s/\\\\probsource{SEMY}/\\\\probsource{$SEMINAR}/" $FILENAME
+		else
+			sed -i "s/\\\\probsource{SEMY}/\\\\probsource{}/" $FILENAME
+		fi
 	done
 fi
 
