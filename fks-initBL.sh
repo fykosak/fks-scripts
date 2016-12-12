@@ -116,10 +116,11 @@ if [ "$1" = "b" ]; then
 		cp "$TEMPLATE" "$FILENAME"
 		SEMINAR=`tr '[:lower:]' '[:upper:]' <<< $seminar`$rocnik
 		sed -i "s/\\\\probbatch{B}/\\\\probbatch{$2}/;s/\\\\probno{P}/\\\\probno{$P}/" $FILENAME
-		if [ "$SEMINAR" != "FYKOS" ]; then
-			sed -i "s/\\\\probsource{SEMY}/\\\\probsource{$SEMINAR}/" $FILENAME
-		else
+		if [ "$SEMINAR" = "FYKOS" ]; then
+			# for FYKOS empty source marks tasks that weren't imported yet
 			sed -i "s/\\\\probsource{SEMY}/\\\\probsource{}/" $FILENAME
+		else
+			sed -i "s/\\\\probsource{SEMY}/\\\\probsource{$SEMINAR}/" $FILENAME
 		fi
 	done
 fi
