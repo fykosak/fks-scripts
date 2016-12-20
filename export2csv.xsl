@@ -9,6 +9,9 @@
 	</template>
 	
 	<template match="export">
+		<apply-templates select="column-definitions/column-definition"/>
+		<text>
+</text>
 		<apply-templates select="data/row"/>
 	</template>
 
@@ -21,6 +24,11 @@
 	<template match="col">
 		<if test="position()!=1"><text>;</text></if>
 		<value-of select="text()"/>
+	</template>
+
+	<template match="column-definition">
+		<if test="position()!=1"><text>;</text></if>
+		<value-of select="@name"/>
 	</template>
 </stylesheet>
 
