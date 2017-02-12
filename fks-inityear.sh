@@ -17,7 +17,7 @@ mkdir -p problems
 mkdir -p results
 mkdir -p data
 mkdir -p todo
-cp -r "$TEMPLATE_PATH/year/problems/graphics" "./problems/graphics"
+cp -rT "$TEMPLATE_PATH/year/problems/graphics" "./problems/graphics"
 cp "$TEMPLATE_PATH/year/Deadline.inc" .
 cp "$TEMPLATE_PATH/year/Makefile.inc" .
 cp "$TEMPLATE_PATH/year/.gitignore" .
