@@ -17,6 +17,7 @@ mkdir -p problems
 mkdir -p results
 mkdir -p data
 mkdir -p todo
+mkdir -p pdf
 cp -rT "$TEMPLATE_PATH/year/problems/graphics" "./problems/graphics"
 cp "$TEMPLATE_PATH/year/Deadline_xml.inc" .
 cp "$TEMPLATE_PATH/year/Makefile.inc" .
@@ -26,6 +27,7 @@ cp "$TEMPLATE_PATH/year/Makefile.conf.sample" .
 cp "$TEMPLATE_PATH/year/Makefile" .
 cp "$TEMPLATE_PATH/year/data/"* ./data
 cp -r "$TEMPLATE_PATH/year/todo/"* ./todo
+cp -r "$TEMPLATE_PATH/year/pdf/"* ./pdf
 
 # create dependency Makefile part
 MAKEFILE="problems/Makefile.inc"
