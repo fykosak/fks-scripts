@@ -1,0 +1,20 @@
+Source: fks-scripts
+Section: tex
+Priority: optional
+Maintainer: FKS TeX group <tex@fykos.cz>
+Build-Depends: debhelper (>=9), make (>=3.8)
+Standards-Version: 3.9.6
+Homepage: https://github.com/fykosak/fks-scripts
+
+Package: fks-scripts
+Architecture: all
+Recommends: dpkg, fakeroot, graphicsmagick-imagemagick-compat
+Depends: fks-templates,
+  git | git-core,
+  libc-bin,
+  openssh-client,
+  perl,
+  sed,
+  texlive-binaries,
+  wget
+Description: Utility scripts for physics contests
