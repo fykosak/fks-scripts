@@ -109,20 +109,22 @@ sed -i "s/SEM/$seminar/"                                          Makefile
 
 # create problems
 if [ "$1" = "b" ]; then
-	cd "../$PROBLEMS_DIR"
-	for P in $(seq 1 $PROB_COUNT); do
-		FILENAME="problem$2-$P.tex"
-		TEMPLATE="$TEMPLATE_PATH/year/problems/problemB-P.tex.$seminar"
-		cp "$TEMPLATE" "$FILENAME"
-		SEMINAR=`tr '[:lower:]' '[:upper:]' <<< $seminar`$rocnik
-		sed -i "s/\\\\probbatch{B}/\\\\probbatch{$2}/;s/\\\\probno{P}/\\\\probno{$P}/" $FILENAME
-		if [ "$SEMINAR" = "FYKOS" ]; then
-			# for FYKOS empty source marks tasks that weren't imported yet
-			sed -i "s/\\\\probsource{SEMY}/\\\\probsource{}/" $FILENAME
-		else
-			sed -i "s/\\\\probsource{SEMY}/\\\\probsource{$SEMINAR}/" $FILENAME
-		fi
-	done
+	if [ "$2" != "7"]; then
+		cd "../$PROBLEMS_DIR"
+		for P in $(seq 1 $PROB_COUNT); do
+			FILENAME="problem$2-$P.tex"
+			TEMPLATE="$TEMPLATE_PATH/year/problems/problemB-P.tex.$seminar"
+			cp "$TEMPLATE" "$FILENAME"
+			SEMINAR=`tr '[:lower:]' '[:upper:]' <<< $seminar`$rocnik
+			sed -i "s/\\\\probbatch{B}/\\\\probbatch{$2}/;s/\\\\probno{P}/\\\\probno{$P}/" $FILENAME
+			if [ "$SEMINAR" = "FYKOS" ]; then
+				# for FYKOS empty source marks tasks that weren't imported yet
+				sed -i "s/\\\\probsource{SEMY}/\\\\probsource{}/" $FILENAME
+			else
+				sed -i "s/\\\\probsource{SEMY}/\\\\probsource{$SEMINAR}/" $FILENAME
+			fi
+		done
+	fi
 fi
 
 cd ../
