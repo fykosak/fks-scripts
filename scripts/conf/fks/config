@@ -19,7 +19,7 @@ pkg_path=/network/data/www/fykos/packages.fykos.cz
 #
 # Initialization
 #
-TEMPLATE_PATH=/usr/local/share/fks/templates
+TEMPLATE_PATH=/usr/share/fks/templates
 
 # rozdil mezi zadanim a resenim
 fksshift=1

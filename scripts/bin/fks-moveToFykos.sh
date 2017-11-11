@@ -10,7 +10,7 @@ source /etc/fks/config
 ulohy=$templRepoPath
 branch="problem"$1"-"$2"-branch"
 workpwd=`pwd`
-source /usr/local/share/fks/semyr
+source /usr/share/fks/semyr
 semyr ""
 
 if [ $# -le 2 ]; then
