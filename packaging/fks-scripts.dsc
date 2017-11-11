@@ -2,7 +2,7 @@ Format: 3.0 (quilt)
 Source: fks-scripts
 Binary: fks-scripts
 Architecture: all
-Version: 1.2~alpha1-1
+Version: 1.2~beta1-1
 Maintainer: FKS TeX group <tex@fykos.cz>
 Homepage: https://github.com/fykosak/fks-scripts
 Standards-Version: 3.9.6
