@@ -26,8 +26,7 @@ _fks-moveToFykos()
     if [[ ${COMP_WORDS[COMP_CWORD-3]} == fks-moveToFykos.sh ]]; then
         tmp=`pwd`/$templRepoPath/problems
         tmp=`ls $tmp | grep ".tex"`
-#        opts=`echo $tmp | sed "s/[J|N|P|E|S]-R[0-9]+S[0-9]-[0-9]+-\([a-z|_]*\)\.tex/\1/g"`
-        opts=`echo $tmp | sed "s/\([J|N|P|E|S]\)-R[0-9]*S[0-9]-[0-9]*-\([a-z|_]*\)\.tex/\1-\2/g"`
+        opts=`echo $tmp | sed "s/\([JNPES]\)-R[0-9]*S[0-9]-[0-9]\+-\([a-z_]*\)\.tex/\1-\2/g"`
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
         return 0
     fi
