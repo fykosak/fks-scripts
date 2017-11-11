@@ -46,15 +46,15 @@ if [ `git status | grep -E 'Untracked|Changes' | wc -l` != 0 ]; then
     exit 1
 fi
 
-file=`sed "s/[J|N|P|E|S][-]\([a-z|_]*\)/\1/g" <<< $3`
-file="?-R*S*-?-$file.tex"
+file=`sed "s/[JNPES]-\([a-z_]*\)/\1/g" <<< $3`
+file="?-R*S*-*-$file.tex"
 file=`cd problems;ls $file`
-if [[ !($file =~ [a-z|_]+) ]]; then
+if [[ !($file =~ [a-z_]+) ]]; then
     echo "Bad file format:" $file"."
     exit -1 
 fi
 
-prefix=`sed 's/\([J|N|P|E|S]-R[0-9]*S[0-9]-[0-9]\).*/\1/' <<< $file`
+prefix=`sed 's/\([JNPES]-R[0-9]*S[0-9]-[0-9]\+\).*/\1/' <<< $file`
 #echo -e $prefix"\n"
 
 
