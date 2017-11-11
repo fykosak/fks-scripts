@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source /usr/local/share/fks/semyr
+source /usr/share/fks/semyr
 source /etc/fks/config
 
 if [ "x$1" = "x" ] ; then

@@ -1,6 +1,6 @@
 DESTDIR=
-DST_bin=$(DESTDIR)/usr/local/bin
-DST_share=$(DESTDIR)/usr/local/share/fks
+DST_bin=$(DESTDIR)/usr/bin
+DST_share=$(DESTDIR)/usr/share/fks
 DST_conf=$(DESTDIR)/etc
 
 build:
