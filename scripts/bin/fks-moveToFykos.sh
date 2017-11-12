@@ -6,6 +6,7 @@
 # @3 problem name
 
 source /etc/fks/config
+LC_ALL=C
 
 ulohy=$templRepoPath
 branch="problem"$1"-"$2"-branch"
@@ -49,12 +50,13 @@ fi
 file=`sed "s/[JNPES]-\([a-z_]*\)/\1/g" <<< $3`
 file="?-R*S*-*-$file.tex"
 file=`cd problems;ls $file`
-if [[ !($file =~ [a-z_]+) ]]; then
+# this form of regex is needed because [a-z] set depends on locale
+if [[ ! ( $file =~ ^[JNPES]-R[0-9]+S[0-9]-[0-9]+-[a-z_]+\.tex$ ) ]]; then
     echo "Bad file format:" $file"."
     exit -1 
 fi
 
-prefix=`sed 's/\([JNPES]-R[0-9]*S[0-9]-[0-9]\+\).*/\1/' <<< $file`
+prefix=`sed 's/\([JNPES]-R[0-9]\+S[0-9]-[0-9]\+-\).*/\1/' <<< $file`
 #echo -e $prefix"\n"
 
 
@@ -97,7 +99,7 @@ for f in `git ls-files`; do
     echo -e "\n############ "$f":"
     case $ext in
         "tex"|"plt")
-            sed  -i "s/$prefix/problem$1-$2/g" $f
+            sed  -i "s/$prefix/problem$1-$2-/g" $f
             git diff $f
             git add $f
             ;;
@@ -105,10 +107,10 @@ for f in `git ls-files`; do
             makefileinc=$makefileinc" "$f
             ;;
     esac
-    git mv $f `sed "s/$prefix/problem$1-$2/g" <<< $f`
+    git mv $f `sed "s/$prefix/problem$1-$2-/g" <<< $f`
 done
 echo ""
-makefileinc=`sed "s/$prefix/problem$1-$2/g" <<< $makefileinc`
+makefileinc=`sed "s/$prefix/problem$1-$2-/g" <<< $makefileinc`
 
 cat << EOF
 
