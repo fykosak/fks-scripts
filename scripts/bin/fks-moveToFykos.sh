@@ -50,12 +50,12 @@ file=`sed "s/[JNPES]-\([a-z_]*\)/\1/g" <<< $3`
 file="?-R*S*-*-$file.tex"
 file=`cd problems;ls $file`
 # this form of regex is needed because [a-z] set depends on locale
-if [[ ! ( $file =~ ^[abcdefghijklmnopqrstuvwxyz_]+$ ) ]]; then
+if [[ ! ( $file =~ ^[JNPES]-R[0123456789]+S[0123456789]-[0123456789]+-[abcdefghijklmnopqrstuvwxyz_]+\.tex$ ) ]]; then
     echo "Bad file format:" $file"."
     exit -1 
 fi
 
-prefix=`sed 's/\([JNPES]-R[0-9]*S[0-9]-[0-9]\+-\).*/\1/' <<< $file`
+prefix=`sed 's/\([JNPES]-R[0-9]\+S[0-9]-[0-9]\+-\).*/\1/' <<< $file`
 #echo -e $prefix"\n"
 
 
