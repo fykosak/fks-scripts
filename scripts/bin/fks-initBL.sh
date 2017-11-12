@@ -127,5 +127,13 @@ if [ "$1" = "b" ]; then
 	fi
 fi
 
+#batch7 is special
+if [ "$2" = "7"]; then
+	sed -i "s/all:\ web\ print\ solutions\ series/all:\ print/"	Makefile
+	sed -i ':"s/\\problemtask//"t'					batch7.tex
+	sed -i '"s/\\problemsheading//""s/\\newpage//"'			batch7.tex
+	sed -i '"s/\\input{serial\\thebatch.tex}//""s/\\newpage//"'	batch7.tex
+fi
+
 cd ../
 
