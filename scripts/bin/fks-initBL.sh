@@ -83,6 +83,11 @@ for file in *.$seminar ; do
 	mv $file ${file%.$seminar}
 done
 
+# move .gitignore.sample to .gitignore
+for file in $(find . -name .gitignore.sample); do
+	mv $file ${file%.sample}
+done
+
 # rename batch dependend values
 for file in *.tex; do
 	IFS='B' read -a array <<< "$file"
@@ -109,7 +114,7 @@ sed -i "s/SEM/$seminar/"                                          Makefile
 
 # create problems
 if [ "$1" = "b" ]; then
-	if [ "$2" != "7"]; then
+	if [ "$2" != "7" ]; then
 		cd "../$PROBLEMS_DIR"
 		for P in $(seq 1 $PROB_COUNT); do
 			FILENAME="problem$2-$P.tex"
