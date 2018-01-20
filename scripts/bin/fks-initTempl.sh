@@ -60,8 +60,8 @@ if [ $answer == "Y" ];then
     fname="problems/"$ptype"-R"$year"S"$batch"-"$id"-"$fname".tex"
     cp $TEMPLATE_PATH/problem-templ.tex $fname
     sed -i "s/YY/"$year"/g" $fname
-    sed -i "s/B/"$batch"/g" $fname
-    sed -i "s/P/"$pno"/g"   $fname
+    sed -i "s/BB/"$batch"/g" $fname
+    sed -i "s/PP/"$pno"/g"   $fname
     sed -i "s/probname{/probname{$name/g" $fname
     echo "Problem file created."
     exit 0
