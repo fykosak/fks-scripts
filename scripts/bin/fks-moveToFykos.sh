@@ -128,7 +128,7 @@ cd $workpwd
 
 git remote add ulohy-subtree $ulohy
 git fetch ulohy-subtree $branch
-git subtree merge -P problems/ ulohy-subtree/$branch -m "["$1"-"$2"] load problem from repository"
+git merge --allow-unrelated-histories -Xsubtree=problems/ -m "["$1"-"$2"] load problem from repository" ulohy-subtree/$branch
 conflict=`git status | grep "both added" | tr -s " " | cut -d " " -f 3`
 
 cat << EOF
