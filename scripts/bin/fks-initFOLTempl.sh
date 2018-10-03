@@ -3,7 +3,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source /etc/fks/config
 
-if [ $# -le 3 ]; then
+if [ $# -le 1 ]; then
     echo "Usage: fks-initFOLTempl.sh <year> <name in czech incl. diacritics\"\">"
     exit -1
 fi
@@ -35,8 +35,8 @@ echo -n "Do you want to create template [Y/n]? "
 read answer
 if [ $answer == "Y" ];then
     echo "Creating problem file."
-    id=`ls "in/series/R"$year"-"*"-"*".tex" 2>/dev/null | wc -l`
-    fname="in/series/R"$year"-"$id"-"$fname".tex"
+    id=`ls "in/FOL/R"$year"-"*"-"*".tex" 2>/dev/null | wc -l`
+    fname="in/FOL/R"$year"-"$id"-"$fname".tex"
     cp $TEMPLATE_PATH/problem-FOLTempl.tex $fname
     sed -i "s/YY/"$year"/g" $fname
     sed -i "s/probname{/probname{$name/g" $fname
