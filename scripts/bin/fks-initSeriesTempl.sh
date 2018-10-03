@@ -58,7 +58,7 @@ if [ $answer == "Y" ];then
     echo "Creating problem file."
     id=`ls "in/series/"$ptype"-R"$year"S"$batch"-"*"-"*".tex" 2>/dev/null | wc -l`
     fname="in/series/"$ptype"-R"$year"S"$batch"-"$id"-"$fname".tex"
-    cp $TEMPLATE_PATH/problem-templ.tex $fname
+    cp $TEMPLATE_PATH/problem-seriesTempl.tex $fname
     sed -i "s/YY/"$year"/g" $fname
     sed -i "s/BB/"$batch"/g" $fname
     sed -i "s/PP/"$pno"/g"   $fname

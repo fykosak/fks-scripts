@@ -37,7 +37,7 @@ if [ $answer == "Y" ];then
     echo "Creating problem file."
     id=`ls "in/series/R"$year"-"*"-"*".tex" 2>/dev/null | wc -l`
     fname="in/series/R"$year"-"$id"-"$fname".tex"
-    cp $TEMPLATE_PATH/problem-FOLtempl.tex $fname
+    cp $TEMPLATE_PATH/problem-FOLTempl.tex $fname
     sed -i "s/YY/"$year"/g" $fname
     sed -i "s/probname{/probname{$name/g" $fname
     echo "Problem file created."
