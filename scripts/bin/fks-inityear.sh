@@ -21,7 +21,7 @@ mkdir -p pdf
 cp -rT "$TEMPLATE_PATH/year/problems/graphics" "./problems/graphics"
 cp "$TEMPLATE_PATH/year/Deadline_xml.inc" .
 cp "$TEMPLATE_PATH/year/Makefile.inc" .
-cp "$TEMPLATE_PATH/year/.gitignore" .
+cp "$TEMPLATE_PATH/year/.gitignore.sample" ".gitignore"
 cp "$TEMPLATE_PATH/year/Makefile.conf.sample" .
 #cp "$TEMPLATE_PATH/year/Makefile.conf.sample" Makefile.conf
 cp "$TEMPLATE_PATH/year/Makefile" .
