@@ -22,8 +22,8 @@ if [ "$vfk" -ne "0" ]; then
 	if [ "$2" = "7" ]; then
 		PREV="5 6"
 	fi
-	PROB_COUNT=6
-	PROBLEMSLIST="1 2 3 4 5 6"
+	PROB_COUNT=7
+	PROBLEMSLIST="1 2 3 4 5 6 7"
 	RESULTSLIST="6 7 8 9"
 	echo "VYFUK "$rocnik
 fi
@@ -105,7 +105,7 @@ done
 
 # update data in Makefile
 sed -i "s/\\\\setcounter{year}{Y}/\\\\setcounter{year}{$rocnik}/" Makefile
-sed -i "s/BATCHNO=B$/BATCHNO=$2/"                                 Makefile
+sed -i "s/BATCHNO=B/BATCHNO=$2/"                                  Makefile
 sed -i "s/SOLVEDBATCHNO=AB/SOLVEDBATCHNO=$PREV/"                  Makefile
 sed -i "s/problemcount{PB}/problemcount{$PROB_COUNT}/"            Makefile
 sed -i "s/problemslist/$PROBLEMSLIST/"                            Makefile
