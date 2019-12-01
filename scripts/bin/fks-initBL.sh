@@ -127,10 +127,11 @@ if [ "$1" = "b" ]; then
 				sed -i "s/\\\\probsource{SEMY}/\\\\probsource{}/" $FILENAME
 			else
 				sed -i "s/\\\\probsource{SEMY}/\\\\probsource{$SEMINAR}/" $FILENAME
+				if [ $P = "1" ]; then sed -i "s/%\\\\probstudyyears{6,7}/\\\\probstudyyears{6,7}/" $FILENAME; fi
+				if [ $P = "5" ]; then sed -i "s/\\\\probtags{}/\\\\probtags{hard}/" $FILENAME; fi
 			fi
 		done
 	fi
 fi
 
 cd ../
-
