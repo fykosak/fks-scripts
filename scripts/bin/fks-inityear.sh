@@ -47,7 +47,7 @@ for file in $(find . -name "*.$seminar" -type f) ; do
 done
 
 # create dependency Makefile part
-MAKEFILE="problems/Makefile.inc"
+MAKEFILE="problems/Makefile-manual.inc"
 
 cat >$MAKEFILE <<END
 # Makefile part for problems dependent images
@@ -65,7 +65,8 @@ for B in $(seq 1 $2); do
 done
 
 #SOAP files parameters
-for file in $(find . -name "*.soap" -type f) ; do
+
+for file in $(find . -name "*.soap" -type f) Makefile.inc; do
 	sed -i "s/SEM/$seminar/" 	$file
 	sed -i "s/YEAR/$rocnik/" 	$file
 done
