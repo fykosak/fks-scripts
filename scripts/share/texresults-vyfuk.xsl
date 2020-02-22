@@ -80,7 +80,7 @@
 	<xsl:template match="column" mode="contestant">            
             <xsl:param name="listed-series"/>
             <xsl:variable name="myposition" select="position()"/>
-            <xsl:if test="not(../../../column-definitions/column-definition[$myposition]/@label='percent' or string-length(../../../column-definitions/column-definition[$myposition]/@label) = 2) or (substring(../../../column-definitions/column-definition[$myposition]/@label, 2) = $listed-series)"><!-- beware this XPath expression isn't more-than-nine-tasks proof -->
+            <xsl:if test="not(../../../column-definitions/column-definition[$myposition]/@label='percent' or ../../../column-definitions/column-definition[$myposition]/@label='total-percent' or string-length(../../../column-definitions/column-definition[$myposition]/@label) = 2) or (substring(../../../column-definitions/column-definition[$myposition]/@label, 2) = $listed-series)"><!-- beware this XPath expression isn't more-than-nine-tasks proof -->
 		<xsl:text> &amp; </xsl:text>
 		<xsl:call-template name="nullable"><xsl:with-param name="value" select="text()"/></xsl:call-template>
             </xsl:if>
