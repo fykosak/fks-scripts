@@ -49,10 +49,10 @@
             <xsl:param name="listed-series"/>
 		<xsl:text>&amp; Student Pilný &amp; MFF UK</xsl:text>
                 <xsl:if test="$listed-series">
-                    <xsl:apply-templates select="column-definitions/column-definition[not(string-length(@label) = 2) or (substring(@label, 2) = $listed-series)][@label != 'percent']" mode="limit"></xsl:apply-templates><!-- beware this XPath expression isn't more-than-nine-tasks proof -->
+                    <xsl:apply-templates select="column-definitions/column-definition[not(string-length(@label) = 2) or (substring(@label, 2) = $listed-series)][@label != 'percent'][@label != 'total-percent']" mode="limit"></xsl:apply-templates><!-- beware this XPath expression isn't more-than-nine-tasks proof -->
                 </xsl:if>
 		<xsl:if test="not($listed-series)">
-                    <xsl:apply-templates select="column-definitions/column-definition[@label != 'percent']" mode="limit"></xsl:apply-templates>
+                    <xsl:apply-templates select="column-definitions/column-definition[@label != 'percent'][@label != 'total-percent']" mode="limit"></xsl:apply-templates>
                 </xsl:if>
 		<xsl:text>\\
 \midrule
