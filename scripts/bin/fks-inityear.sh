@@ -30,7 +30,6 @@ cp "$TEMPLATE_PATH/year/Makefile.conf.sample" .
 #cp "$TEMPLATE_PATH/year/Makefile.conf.sample" Makefile.conf
 cp "$TEMPLATE_PATH/year/Makefile" .
 cp "$TEMPLATE_PATH/year/data/"* ./data
-cp -r "$TEMPLATE_PATH/year/todo/"* ./todo
 cp -r "$TEMPLATE_PATH/year/pdf/"* ./pdf
 
 # keep files needed by seminar
@@ -38,6 +37,7 @@ if [ $seminar = "fykos" ];then
 	mkdir -p results
 	find . -name "*.vyfuk" -type f -delete
 else
+    cp -r "$TEMPLATE_PATH/year/todo/"* ./todo
 	find . -name "*.fykos" -type f -delete
 fi
 
