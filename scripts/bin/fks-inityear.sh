@@ -19,7 +19,6 @@ fi
 # create empty year structure
 mkdir -p problems
 mkdir -p data
-mkdir -p todo
 mkdir -p pdf
 cp -rT "$TEMPLATE_PATH/year/problems/graphics" "./problems/graphics"
 cp "$TEMPLATE_PATH/year/Deadline_xml.inc" .
@@ -37,6 +36,7 @@ if [ $seminar = "fykos" ];then
 	mkdir -p results
 	find . -name "*.vyfuk" -type f -delete
 else
+    mkdir -p todo
     cp -r "$TEMPLATE_PATH/year/todo/"* ./todo
 	find . -name "*.fykos" -type f -delete
 fi
