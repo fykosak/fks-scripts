@@ -20,9 +20,5 @@
 		<text>
 </text>
 	</template>
-
-	<template name="tex">
-		
-	</template>
 </stylesheet>
 
