@@ -3,23 +3,19 @@
 	<output method="text" indent="no"/>
 	<strip-space elements="*"/>
 
-	<template match="/">
+	<template match="signatures">
 		<!-- this allows nesting stats element arbitrarily -->
-		<apply-templates select="//export"></apply-templates>
+        <apply-templates select="org"></apply-templates>
 	</template>
 	
-	<template match="export">
-		<apply-templates select="data/row[not(col[4]='cancelled')]"></apply-templates>
-	</template>
-
-	<template match="row">
+	<template match="org">
 		<!-- team header -->
 		<text>\newsignature{</text>
-		<value-of select="col[1]"/>
+		<value-of select="name"/>
 		<text>}{</text>
-		<value-of select="col[2]"/>
+		<value-of select="texSignature"/>
 		<text>}{</text>
-		<value-of select="col[3]"/>
+		<value-of select="domainAlias"/>
 		<text>}</text>
 		<text>
 </text>
