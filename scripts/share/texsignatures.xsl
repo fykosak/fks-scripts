@@ -11,9 +11,9 @@
 	<template match="org">
 		<!-- team header -->
 		<text>\newsignature{</text>
-		<value-of select="name"/>
-		<text>}{</text>
 		<value-of select="texSignature"/>
+		<text>}{</text>
+		<value-of select="name"/>
 		<text>}{</text>
 		<value-of select="domainAlias"/>
 		<text>}</text>
