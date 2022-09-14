@@ -45,11 +45,16 @@ for file in $(find . -name "*.$seminar" -type f) ; do
 done
 
 #SOAP files parameters
-for file in $(find . -name "*.soap" -type f) Makefile.inc; do
-	sed -i "s/SEM/$seminar/" $file
-	sed -i "s/YEAR/$rocnik/" $file
+for file in data/statsRequest.soap data/statsRequest.soap Makefile.inc; do
+	sed -i "s/SEM/$seminar/" 	$file
+	sed -i "s/YEAR/$rocnik/" 	$file
 done
 
+if [ $seminar = "fykos" ];then
+	sed -i "s/SEMID/1/" data/signaturesRequest.soap
+else
+	sed -i "s/SEMID/2/" data/signaturesRequest.soap
+fi
 
 echo "Year initialized. Before commiting do not forget to modify contest specific information."
 echo "This mostly applies to:"
