@@ -17,10 +17,9 @@ fi
 
 
 # create empty year structure
-mkdir -p problems
+mkdir -p problems/graphics
 mkdir -p data
-mkdir -p pdf
-cp -rT "$TEMPLATE_PATH/year/problems/graphics" "./problems/graphics"
+cp "$TEMPLATE_PATH/year/problems/graphics/.gitignore.sample" "./problems/graphics/.gitignore"
 cp "$TEMPLATE_PATH/year/Deadline_xml.inc" .
 cp "$TEMPLATE_PATH/year/Makefile.inc" .
 cp "$TEMPLATE_PATH/year/.gitignore.sample" ".gitignore"
@@ -31,7 +30,6 @@ cp "$TEMPLATE_PATH/year/data/"* ./data
 
 # keep files needed by seminar
 if [ $seminar = "fykos" ];then
-	mkdir -p results
 	find . -name "*.vyfuk" -type f -delete
 else
     mkdir -p todo
@@ -45,9 +43,9 @@ for file in $(find . -name "*.$seminar" -type f) ; do
 done
 
 #SOAP files parameters
-for file in data/statsRequest.soap data/statsRequest.soap Makefile.inc; do
-	sed -i "s/SEM/$seminar/" 	$file
-	sed -i "s/YEAR/$rocnik/" 	$file
+for file in data/resultsRequest.soap data/statsRequest.soap Makefile.inc; do
+	sed -i "s/SEM/$seminar/" $file
+	sed -i "s/YEAR/$rocnik/" $file
 done
 
 if [ $seminar = "fykos" ];then
