@@ -80,12 +80,12 @@ fi
 
 # cut .fykos|.vyfuk
 for file in *.$seminar ; do
-	mv $file ${file%.$seminar}
+	mv $file $(basename "$file" ".$seminar")
 done
 
 # move .gitignore.sample to .gitignore
 for file in $(find . -name .gitignore.sample); do
-	mv $file ${file%.sample}
+	mv $file $(basename $file ".sample")
 done
 
 # rename batch dependend values
@@ -98,7 +98,7 @@ for file in *.tex; do
 		sed -i "s/\\\\setcounter{solvedbatch}{AB}/\\\\setcounter{solvedbatch}{$PREV}/"    $file
 		sed -i "s/vysledkyB/vysledky$PREV/"                               $file
 		sed -i "s/SEM/$seminar/"                                          $file
-		mv $file ${array[0]}$2${array[1]:0:4}
+		mv $file $(echo "$file" | sed "s/B/$2/")
 	fi
 done
 
