@@ -23,7 +23,7 @@ TEMPLATE_PATH=/usr/share/fks/templates
 
 # rozdil mezi zadanim a resenim
 fksshift=1
-vfkshift=2
+vfkshift=1
 
 #
 # path to fykos-ulohy relatively to fykosXX (or absolutely)
