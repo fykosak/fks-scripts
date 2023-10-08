@@ -19,9 +19,6 @@ if   [ "$fks" -ne "0" ]; then
 fi
 if [ "$vfk" -ne "0" ]; then
 	PREV=$(($2-$vfkshift))
-	if [ "$2" = "7" ]; then
-		PREV="5 6"
-	fi
 	PROB_COUNT=7
 	PROBLEMSLIST="1 2 3 4 5 6 7"
 	RESULTSLIST="6 7 8 9"
