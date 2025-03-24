@@ -82,7 +82,7 @@ done
 
 # move .gitignore.sample to .gitignore
 for file in $(find . -name .gitignore.sample); do
-	mv $file $(basename $file ".sample")
+	mv $file "$(dirname $file)/$(basename $file ".sample")"
 done
 
 # rename batch dependend values

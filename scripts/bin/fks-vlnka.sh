@@ -8,6 +8,10 @@ ZKRATSK="
 	tj. tzn. tzv. pozn. pozn.: napr. napr.: popr. pr. kupr. č. obr. resp.
 "
 
+ZKRATEN="
+	i.e. e.g.
+"
+
 # seznam slov před a za matematikou
 PZMATCZ="
 	bod bodu bode bodě bodem body bodů bodům body bodech
@@ -36,6 +40,7 @@ PZMATCZ="
 	moment momentu momente momentě momentem momenty momentů momentům momentech
 	náboj náboje náboji nábojem nábojům nábojích náboji
 	napětí napětím napětích napětími
+	kapacita kapacity kapacitě kapacitu kapacitou kapacity kapacit kapacitám kapacitách kapacitami
 	neplatí
 	neznámá neznámé neznámou neznámými neznámým
 	objem objemu objeme objemem objemy objemů objemům objemech
@@ -58,6 +63,7 @@ PZMATCZ="
 	síla síly síle sílu sílo silou sílou síly sil silám sílám silách sílách silami sílami
 	sklon sklonu sklone sklonem sklony sklonů sklonům sklonech
 	složka složky složce složku složko složkou složek složkách složkami
+	svítivost
 	směr směru směre směrem směry směrů směrům směrech
 	součet součtu součte součtem součty součtů součtům součtech
 	součin součinu součine součinem součiny součinů součinům součinech vynásobení vynásobené vynásobená vynásobena
@@ -65,9 +71,9 @@ PZMATCZ="
 	strana strany straně stranu strano stranou stran stranám stranách stranami
 	střed středu střede středem středy středů středům středech
 	substituce substituci substitucí substitucím substitucích substitucemi
-	šířka šířky šířce šířku šířko šířkou šířek šířkám šířkách šířkami široký široká široké
+	šířka šířky šířce šířku šířko šířkou šířek šířkám šířkách šířkami široký široká široké širokou
 	teplota teploty teplotě teplotu teploto teplotou teplot teplotám teplotách teplotami
-	tlak tlaku tlalem tlaky tlaků tlakům tlacích
+	tlak tlaku tlakem tlaky tlaků tlakům tlacích
 	tloušťka tloušťky tloušťce tloušťku tloušťko tloušťkou tlouštěk tloušťkám tloušťkách tloušťkami
 	trvat trvá trvalo trvala
 	úhel úhlu úhel úhle úhlem úhlů úhlům úhly úhlech
@@ -76,13 +82,33 @@ PZMATCZ="
 	vychází
 	vyjde
 	výraz výrazu výraze výrazem výrazy výrazů výrazům výrazech
+	výkon výkonu výkonem
 	výška výšky výšce výšku výško výškou výšky výšek výškám výškách výškami vysoký vysoká vysoké
-	vzdálenost vzdálenosti vzdáleností vzdálenostem vzdálenostech vzdálenostmi
+	vzdálenost vzdálenosti vzdáleností vzdálenostem vzdálenostech vzdálenostmi vzdálen vzdálena vzdáleno
 	vzorec vzorce vzorci vzorcem vzorců vzorcům vzorcích
 	vztah vztahu vztahem vztahy vztahů vztahům vztazích
 	záporný záporná záporné zápornému záporným záporných
 	zrychlení zrychlením zrychleních zrychleními
+	intenzita intenzity intenzitě intenzitou
+	perioda periody periodou
+	odpor odporu odporem odpory odporů odporům odporech
+	průtok průtoku průtokem průtoky průtoků průtokům průtocích
+	tuhost tuhosti tuhostí tuhostech tuhostmi
+	tok toku tokem toky toků tokům tocích
+	práci práce
+	teplo tepla teplu teple teplem
+	změna změny změně změnou změn změnám změnách změnami
+	dráha dráhu dráhy dráze dráhou drah drahám drahách dráhami
+	plocha plochy ploše plochou ploch plochám plochách plochami
+	výchylka výchylky výchylce výchylku výchylce výchylkou výchylek výchylkám výchylkách výchylkami
+	podstava podstavy podstavám podstav
+	tření
+	polarice
+	násobek
+	záření
+	amplituda amplitudy amplitudě amplitudu amplitudou amplitud amplitudám amplitudách amplitudami
 "
+
 PZMATSK="
 	bod bodu bode bode bodom body bodov bodom body bodoch
 	čas času čase časom časy časov časom časoch
@@ -133,7 +159,7 @@ PZMATSK="
 	sklon sklonu sklon sklonom sklony sklonov sklonom sklonoch
 	zložka zložky zložke zložku zložku zložkou zložiek zložkách zložkami
 	smer smeru smere smerom smermi smerov líniám smeroch
-	súčet súčtu Souci súčtom súčty súčtov súčtov súčtoch
+	súčet súčtu súčtom súčty súčtov súčtov súčtoch
 	súčin súčinu súčin súčinom súčiny súčinov součinům kombináciách vynásobení vynásobenej vynásobená vynásobená
 	súradnice súradnicu súradnicou súradníc súradniciam súradniciach súradnicami
 	strana strany strane strana Strana stranou strán stranám stranách stranami
@@ -141,7 +167,7 @@ PZMATSK="
 	substitúcia substitúciu substitúciou substitucím substitúciou substitúciami
 	šírka šírky šírke šírku šírka šírka šírok šírkam šírkach šírkami široký široká široké
 	teplota teploty teplote teplotu Teplota Teplota teplôt teplotám teplotách teplotami
-	tlak tlaku tlalem tlaky tlakov tlakom tlakoch
+	tlak tlaku tlakem tlaky tlakov tlakom tlakoch
 	hrúbka hrúbky hrúbke hrúbku hrúbku hrúbkou hrúbok hrúbkam hrúbkach hrúbkami
 	trvať trvá trvalo trvala
 	uhol uhla uhol uhla uhlom uhlov uhlom uhly uhloch
@@ -152,15 +178,32 @@ PZMATSK="
 	výraz výrazu výrazoch výrazom výrazy výrazov výrazom výrazoch
 	výška výšky výške výška výška výška výška výšok výškam výškach výškami vysoký vysoká vysoké
 	vzdialenosť vzdialenosti vzdialenosťou vzdialenostiam vzdialenostiach vzdialenosťami
-	vzorec vzorca vzorci vzorcom vzorcov vzorcom vzorkách
+	vzorec vzorca vzorcu vzorci vzorcom vzorcov vzorcom vzorkách
 	vzťah vzťahu vzťahom vzťahy vzťahov vzťahom vzťahoch
 	záporný záporná záporné zápornému záporným záporných
 	zrýchlenie zrýchlením zrýchleniach zrýchleniami
+	obsah obsahu obsahy obsahů obsahům obsazích
+	koeficient koeficientu koeficienty koeficientů koeficientům koeficientech
+	částice částici částicí částicím částicích částicemi
+	příkon příkonu příkonem příkony příkonů příkonům příkonech
+"
+
+PZMATEN="
+	is represents mass weight height width velocity time length angle constant constants unit
+	rate charge pressure voltage voltages rezistance variable variables ratio
+	current axis frequency radius distance distances approximation area density depth
+	speed capacitance amplitude amplitudes inductance period coordinate term
+	volume volumes field fields quantity surface acceleration temperature
+	thickness heat torque coefficients coefficient diameter path flow number
+	relation relations force direction substitute function functions power approximately
+	deflection remaining trajectory tension radiation substitution substitutes long
+	energy energies system systems reaction magnitude stiffness becomes
 "
 
 # seznam slov před matematikou
 PRMATCZ="
 	asi
+	až
 	být
 	cca
 	číselně
@@ -184,6 +227,7 @@ PRMATCZ="
 	přesně přesněji nejpřesněji přesnější nejpřesnější
 	přibližně
 	přičteme přičetli
+	přičemž
 	psát
 	rok roku roce rokem roky roků rokům rocích
 	rovno rovna rovná rovny rovnají
@@ -194,12 +238,25 @@ PRMATCZ="
 	uvažovat uvažujeme uvažujme
 	volíme zvolíme zvolili zvolme
 	vydělíme vydělili
+	vyjádříme vyjádřili vyjádřením vyjádření vyjádřeními
 	výsledek výsledku výsledkem výsledky výsledků výsledkům výsledcích
 	za
 	zároveň
 	zhruba
 	že
+	osa osách osy ose osu osou os osám osách osami
+	rovina roviny rovině rovinu rovinou roviny rovin rovinám rovinách rovinami
+	jednotka jednotkou jednotek
+	měří měříme měříte
+	naměřím naměříš naměří naměříme naměříte
+	reakci
+	rozdělení rozdělením rozděleních
+	je bude byl byla bylo
+	váží vážící
+	podmínka podmínky podmínce podmínku podmínkou podmínek podmínkám podmínkách podmínkami
+	vyjádřit vyjádřil vyjádřila vyjádřila vyjádřili
 "
+
 PRMATSK="
 	asi
 	byť
@@ -242,15 +299,23 @@ PRMATSK="
 	že
 "
 
+PRMATEN="
+	of as derive by to at get for about from than be so with express is was weigh weighs weighing
+	travels travel denote denotes lands value values
+"
+
 # seznam slov za matematikou
 ZAMATCZ="
 	je jsou
 	jeho její
+	značí
 "
 ZAMATSK="
 	je sú
 	jeho jej
 "
+
+ZAMATEN=""
 
 # seznam názvů odkazů, za kterými má být vlnka
 PRODKCZ="
@@ -278,6 +343,8 @@ PRODKSK="
 	obrázok obrázku obrázky obrázkom
 "
 
+PRODKEN=""
+
 # seznam slov před čísly
 PRCISCZ="
 	rok roku roka roce rokem roky roků rokům rocích
@@ -296,6 +363,8 @@ PRCISSK="
 	pred
 "
 
+PRCISEN=""
+
 # názvy měsíců
 MESICCZ="
 	leden ledna lednu ledne lednem ledny lednů lednům lednech
@@ -308,7 +377,7 @@ MESICCZ="
 	srpen srpna srpnu srpne srpnem srpny srpnů srpnům srpnech
 	září zářím
 	říjen října říjnu říjne říjnem říjny říjnů říjnům říjnech
-	listopad listopadu listopade listopedem listopady listopadů listopadům listopadech
+	listopad listopadu listopade listopadem listopady listopadů listopadům listopadech
 	prosinec prosince prosinci prosincem prosince prosinců prosincům prosincích prosinci
 "
 MESICSK="
@@ -322,45 +391,48 @@ MESICSK="
 	august augusta auguste augusta augustom augusta augusta srpnům augusta
 	septembra septembrom
 	október októbra októbri októbra októbrom októbra októbra říjnům októbra
-	november novembra novembra listopedem novembra novembra listopadům novembra
+	november novembra novembra novembra novembra listopadům novembra
 	december decembra decembri decembrom decembra decembra prosincům decembra decembri
 "
 
-ZKRAT="$ZKRATCZ $ZKRATSK"
+ZKRAT="$ZKRATCZ $ZKRATSK $ZKRATEN"
 ZKRAT="$(echo $ZKRAT | sed -r -e 's/ +/|/g')"
 ZKRAT="$(echo $ZKRAT | sed -r -e 's/\./[\.]/g')"
-PRMAT="$PZMATCZ $PZMATSK $PRMATCZ $PRMATSK $ZKRATCZ $ZKRATSK"
+PRMAT="$PZMATCZ $PZMATSK $PZMATEN $PRMATCZ $PRMATSK $PRMATEN $ZKRATCZ $ZKRATSK $ZKRATEN"
 PRMAT=$(echo $PRMAT | sed -r -e 's/[ \t]+/|/g')
-ZAMAT="$PZMATCZ $PZMATSK $ZAMATCZ $ZAMATSK"
+ZAMAT="$PZMATCZ $PZMATSK $PZMATEN $ZAMATEN $ZAMATCZ $ZAMATSK"
 ZAMAT=$(echo $ZAMAT | sed -r -e 's/[ \t]+/|/g')
-PRODK="$PRODKCZ $PRODKSK"
+PRODK="$PRODKCZ $PRODKSK $PRODKEN"
 PRODK=$(echo $PRODK | sed -r -e 's/[ \t]+/|/g')
-PRCIS="$PRCISCZ $PRCISSK $MESICCZ $MESICSK"
+PRCIS="$PRCISCZ $PRCISSK $PRCISEN $MESICCZ $MESICSK"
 PRCIS=$(echo $PRCIS | sed -r -e 's/[ \t]+/|/g')
 MESIC="$MESICCZ $MESICSK"
 MESIC=$(echo $MESIC | sed -r -e 's/[ \t]+/|/g')
 
+# /^\s*%! -- ignoruj řádky, které začínají libovolným počtem mezer a procentem
+#   => ignoruj řádkové komentáře s libovolným odsazením
 for file in "$@"
 do
 	vlna -l -n -s -m -r -v aAiIkKoOsSuUvVzZ "$file" # vlna - jednopísmenová slova na konci řádku
-	sed -r -i -e "N;s/([[:alpha:]])[ \n\t]+--[ \n\t]+([[:alpha:]])/\1~--~\2/gI;P;D;" "$file" # kolem pomlčky
-	sed -r -i -e "N;s/([ \n\t~]+)($ZKRAT)([ \n\t]+)/\3\1\2~/gI;P;D;" "$file" # zkratky
-	sed -r -i -e "N;s/([ \n\t~]+)($PRMAT)([ \n\t]+)[\$]/\3\1\2~\$/gI;P;D;" "$file" # před matematikou
-	sed -r -i -e "N;s/([ \n\t~]+)($PRMAT)([ \n\t~]+)([[:alpha:]]+)([ \n\t]+)[\$]/\1\3\5\2\3\4~\$/gI;P;D;" "$file" # před matematikou + 1 další slovo
-	sed -r -i -e "N;s/[\$]([ \n\t]+)($ZAMAT)([ \n\t~]+)/\$~\2\3\1/gI;P;D;" "$file" # za matematikou
-	sed -r -i -e "N;s/([ \n\t~]+)($PRODK)[ \n\t~]+([\\]ref|[\\]eqref|\([\\]ref)/\1\2~\3/gI;P;D;" "$file" # před odkazy
-	sed -r -i -e "N;s/([ \n\t~]+)($PRCIS)([ \n\t]+)([[:digit:]])/\3\1\2~\4/gI;P;D;" "$file" # před čísly
-	sed -r -i -e "N;s/([[:digit:]]{1,2}\.)[ \n\t~]+([[:digit:]]{1,2}\.|$MESIC)[ \n\t~]+([[:digit:]]{4})/\1~\2~\3/gI;P;D;" "$file" # v datumech s rokem
-	sed -r -i -e "N;s/([[:digit:]]{1,2}\.)[ \n\t~]+([[:digit:]]{1,2}\.|$MESIC)/\1~\2/gI;P;D;" "$file" # v datumech bez roku
-	sed -r -i -e "N;s/\([\\]ref\{([^\}]*)\}\)/\\\eqref\{\1\}/gI;P;D;" "$file" # nahradit ošklivé odkazy na rovnice
-	sed -r -i -e "N;s/(~){2,}/\1/gI;P;D;" "$file" # opravit násobné vlnky
-	sed -r -i -e "N;s/[ \n\t]*~[ \n\t]*/~/gI;P;D;" "$file" # smazat mezery kolem vlnek
-	sed -r -i -e "N;s/\n            /\n\t\t\t/gI;P;D;" "$file" # mezery na 3 odsazení
-	sed -r -i -e "N;s/\n        /\n\t\t/gI;P;D;" "$file" # mezery na 2 odsazení
-	sed -r -i -e "N;s/\n    /\n\t/gI;P;D;" "$file" # mezery na 1 odsazení
-	sed -r -i -e "N;s/ {2,}/ /gI;P;D;" "$file" # opravit násobné mezery
-	sed -r -i -e "N;s/ *\n/\n/gI;P;D;" "$file" # smazat mezery na konci řádku
-	sed -r -i -e "N;s/\n */\n/gI;P;D;" "$file" # smazat mezery na začátku řádku
+	sed -r -i -e "/^\s*%/!s/([[:alpha:]])[ \n\t]+--[ \n\t]+([[:alpha:]])/\1~-- \2/gI;P;D;" "$file" # kolem pomlčky
+	sed -r -i -e "s/~--~/~-- /g" "$file" # kolem pomlčky
+	sed -r -i -e "/^[\s]*%/!N;s/([ \n\t~]+)($ZKRAT)([ \n\t]+)/\3\1\2~/gI;P;D;" "$file" # zkratky
+	sed -r -i -e "/^[\s]*%/!N;s/([ \n\t~]+)($PRMAT)([ \n\t]+)[\$]/\3\1\2~\$/gI;P;D;" "$file" # před matematikou
+	sed -r -i -e "/^[\s]*%/!N;s/([ \n\t~]+)($PRMAT)([ \n\t~]+)([[:alpha:]]+)([ \n\t]+)[\$]/\1\3\5\2\3\4~\$/gI;P;D;" "$file" # před matematikou + 1 další slovo
+	sed -r -i -e "/^[\s]*%/!N;s/[\$]([ \n\t]+)($ZAMAT)([ \n\t~]+)/\$~\2\3\1/gI;P;D;" "$file" # za matematikou
+	sed -r -i -e "/^[\s]*%/!N;s/([ \n\t~]+)($PRODK)[ \n\t~]+([\\]ref|[\\]eqref|\([\\]ref)/\1\2~\3/gI;P;D;" "$file" # před odkazy
+	sed -r -i -e "/^[\s]*%/!N;s/([ \n\t~]+)($PRCIS)([ \n\t]+)([[:digit:]])/\3\1\2~\4/gI;P;D;" "$file" # před čísly
+	sed -r -i -e "/^[\s]*%/!N;s/([[:digit:]]{1,2}\.)[ \n\t~]+([[:digit:]]{1,2}\.|$MESIC)[ \n\t~]+([[:digit:]]{4})/\1~\2~\3/gI;P;D;" "$file" # v datumech s rokem
+	sed -r -i -e "/^[\s]*%/!N;s/([[:digit:]]{1,2}\.)[ \n\t~]+([[:digit:]]{1,2}\.|$MESIC)/\1~\2/gI;P;D;" "$file" # v datumech bez roku
+	sed -r -i -e "/^[\s]*%/!N;s/\([\\]ref\{([^\}]*)\}\)/\\\eqref\{\1\}/gI;P;D;" "$file" # nahradit ošklivé odkazy na rovnice
+	sed -r -i -e "/^[\s]*%/!N;s/(~){2,}/\1/gI;P;D;" "$file" # opravit násobné vlnky
+	sed -r -i -e "/^[\s]*%/!N;s/[ \n\t]*~[ \n\t]*/~/gI;P;D;" "$file" # smazat mezery kolem vlnek
+	sed -r -i -e "/^[\s]*%/!N;s/\n            /\n\t\t\t/gI;P;D;" "$file" # mezery na 3 odsazení
+	sed -r -i -e "/^[\s]*%/!N;s/\n        /\n\t\t/gI;P;D;" "$file" # mezery na 2 odsazení
+	sed -r -i -e "/^[\s]*%/!N;s/\n    /\n\t/gI;P;D;" "$file" # mezery na 1 odsazení
+	sed -r -i -e "/^[\s]*%/!N;s/ {2,}/ /gI;P;D;" "$file" # opravit násobné mezery
+	sed -r -i -e "/^[\s]*%/!N;s/ *\n/\n/gI;P;D;" "$file" # smazat mezery na konci řádku
+	sed -r -i -e "/^[\s]*%/!N;s/\n */\n/gI;P;D;" "$file" # smazat mezery na začátku řádku
 done
 
 echo "Opravit dělení čísel:"
