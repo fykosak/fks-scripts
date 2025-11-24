@@ -416,6 +416,7 @@ do
 	vlna -l -n -s -m -r -v aAiIkKoOsSuUvVzZ "$file" # vlna - jednopísmenová slova na konci řádku
 	sed -r -i -e "/^\s*%/!s/([[:alpha:]])[ \n\t]+--[ \n\t]+([[:alpha:]])/\1~-- \2/gI;P;D;" "$file" # kolem pomlčky
 	sed -r -i -e "s/~--~/~-- /g" "$file" # kolem pomlčky
+  	sed -r -i -e "s/\xe2\x80\x94/---/g" "$file" # nahradit utf-8 pomlčku za tři spojovníky
 	sed -r -i -e "/^[\s]*%/!N;s/([ \n\t~]+)($ZKRAT)([ \n\t]+)/\3\1\2~/gI;P;D;" "$file" # zkratky
 	sed -r -i -e "/^[\s]*%/!N;s/([ \n\t~]+)($PRMAT)([ \n\t]+)[\$]/\3\1\2~\$/gI;P;D;" "$file" # před matematikou
 	sed -r -i -e "/^[\s]*%/!N;s/([ \n\t~]+)($PRMAT)([ \n\t~]+)([[:alpha:]]+)([ \n\t]+)[\$]/\1\3\5\2\3\4~\$/gI;P;D;" "$file" # před matematikou + 1 další slovo
@@ -433,6 +434,7 @@ do
 	sed -r -i -e "/^[\s]*%/!N;s/ {2,}/ /gI;P;D;" "$file" # opravit násobné mezery
 	sed -r -i -e "/^[\s]*%/!N;s/ *\n/\n/gI;P;D;" "$file" # smazat mezery na konci řádku
 	sed -r -i -e "/^[\s]*%/!N;s/\n */\n/gI;P;D;" "$file" # smazat mezery na začátku řádku
+  	sed -r -i -e "s/\xe2\x80\x99/'/g" "$file" # nahradit jednoduchou uvozovku za apostrof
 done
 
 echo "Opravit dělení čísel:"
