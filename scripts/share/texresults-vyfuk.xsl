@@ -89,8 +89,8 @@
 	<xsl:template match="contestant">
         <xsl:param name="listed-series"/>
 		<xsl:if test="column[last()]/text()">
-			<xsl:if test="rank/@to"><xsl:value-of select="rank/@from"/>.--<xsl:value-of select="rank/@to"/>.</xsl:if>
-			<xsl:if test="not(rank/@to)"><xsl:value-of select="rank/@from"/>.</xsl:if>
+			<xsl:if test="not(rank/@from=rank/@to)"><xsl:value-of select="rank/@from"/>.--<xsl:value-of select="rank/@to"/>.</xsl:if>
+			<xsl:if test="rank/@from=rank/@to"><xsl:value-of select="rank/@from"/>.</xsl:if>
 			<xsl:text> &amp; </xsl:text>
 			<xsl:value-of select="@name"/>
 			<xsl:text> &amp;</xsl:text>
